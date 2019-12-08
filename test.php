@@ -52,7 +52,12 @@
                 left: 200px;
                 width: calc(100% - 250px);
                 position: relative;
-            }     
+            }    
+
+            #boardTitle{
+                width: 300px;
+                margin:auto;
+            }  
 
             #threadForm{
                 width: 300px;
@@ -119,6 +124,10 @@
 
             <section id="main">
 
+                <h1 id="boardTitle">/ict/ - Informatica</h1>
+
+                <br>
+
                 <form id="threadForm">
                     <span>Create thread</span> <br>  
                     <span class="formSpan">Subject</span>
@@ -146,7 +155,7 @@
                         <br>
                         <p>Gekke post hierzo</p>
                     </div>
-                    
+
                     <div class="post">
                         <span id="postId">postnummer<span>
                         <span id="posterName">Anonymous</span>
