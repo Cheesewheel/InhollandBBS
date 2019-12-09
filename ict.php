@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>
-            Test
+            /ict/ - Informatica
         </title>
 
         <style>
@@ -57,6 +57,7 @@
             #boardTitle{
                 width: 300px;
                 margin:auto;
+                text-align: center;
             }  
 
             #threadForm{

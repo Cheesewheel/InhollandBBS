@@ -1,18 +1,18 @@
 <html>
     <head>
         <title>
-            Test
+            /$/ - Bussiness Studies
         </title>
 
         <style>
             body{
-                background-color: #1E1E1E;
-                color: #34FF26;
+                background-color: #E1C699;
+                color: black;
                 font-family: courier;
             }
 
             a:link, a:visited, a:link:active, a:visited:active{
-                color: green;               
+                color: black;               
             }
             
             #header{
@@ -41,7 +41,7 @@
                 border: double green;
                 padding: 1em;
                 width: 150px;
-                color: #34FF26;
+                color: black;
                 float: left;
                 position: fixed;
             } 
@@ -55,8 +55,9 @@
             }    
 
             #boardTitle{
-                width: 300px;
+                width: 450px;
                 margin:auto;
+                text-align: center;
             }  
 
             #threadForm{
@@ -124,7 +125,7 @@
 
             <section id="main">
 
-                <h1 id="boardTitle">/ict/ - Informatica</h1>
+                <h1 id="boardTitle">/$/ - Bussiness Studies</h1>
 
                 <br>
 

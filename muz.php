@@ -1,18 +1,18 @@
 <html>
     <head>
         <title>
-            Test
+            /muz/ - Muziekopleiding
         </title>
 
         <style>
             body{
-                background-color: #1E1E1E;
-                color: #34FF26;
+                background-color: #E1C699;
+                color: #black;
                 font-family: courier;
             }
 
             a:link, a:visited, a:link:active, a:visited:active{
-                color: green;               
+                color: black;               
             }
             
             #header{
@@ -38,16 +38,16 @@
             }
 
             #navbar{
-                border: double green;
+                border: double purple;
                 padding: 1em;
                 width: 150px;
-                color: #34FF26;
+                color: black;
                 float: left;
                 position: fixed;
             } 
 
             #main{
-                border: double green;
+                border: double purple;
                 padding: 1em;
                 left: 200px;
                 width: calc(100% - 250px);
@@ -55,8 +55,9 @@
             }    
 
             #boardTitle{
-                width: 300px;
+                width: 350px;
                 margin:auto;
+                text-align: center;
             }  
 
             #threadForm{
@@ -64,7 +65,7 @@
                 margin: auto;
                 margin-bottom: 1em;
                 padding: 1em;
-                border: double green;
+                border: double purple;
             }
 
             #comment{
@@ -77,7 +78,7 @@
             }
 
             .post{
-                border: double green;
+                border: double purple;
                 padding: 1em;
                 margin: 0.5em;
                 margin-left: 2em;
@@ -85,7 +86,7 @@
 
             .OP{
                 margin-left: 0em;
-                border: double green;
+                border: double purple;
                 padding: 1em;
             }          
         </style>
@@ -124,7 +125,7 @@
 
             <section id="main">
 
-                <h1 id="boardTitle">/ict/ - Informatica</h1>
+                <h1 id="boardTitle">/muz/ - Muziekopleiding</h1>
 
                 <br>
 
