@@ -1,7 +1,8 @@
 <html>
     <head>
         <title>
-            /trv/ - Tourism Management
+            /miro/ - Medical Imaging Radiation Oncology	
+
         </title>
 
         <style>
@@ -38,7 +39,7 @@
             }
 
             #navbar{
-                border: double blue;
+                border: double red;
                 padding: 1em;
                 width: 150px;
                 color: black;
@@ -47,7 +48,7 @@
             } 
 
             #main{
-                border: double blue;
+                border: double red;
                 padding: 1em;
                 left: 200px;
                 width: calc(100% - 250px);
@@ -55,7 +56,7 @@
             }    
 
             #boardTitle{
-                width: 450px;
+                width: 800px;
                 margin:auto;
                 text-align: center;
             }  
@@ -65,7 +66,7 @@
                 margin: auto;
                 margin-bottom: 1em;
                 padding: 1em;
-                border: double blue;
+                border: double red;
             }
 
             #comment{
@@ -78,7 +79,7 @@
             }
 
             .post{
-                border: double blue;
+                border: double red;
                 padding: 1em;
                 margin: 0.5em;
                 margin-left: 2em;
@@ -86,7 +87,7 @@
 
             .OP{
                 margin-left: 0em;
-                border: double blue;
+                border: double red;
                 padding: 1em;
             }          
         </style>
@@ -101,31 +102,11 @@
         <br>
 
         <div id="content">
-            <nav id="navbar">
-                <span>Opleidingen</span>
-                <br>
-                <a href="ict.php">/ict/ - Informatica</a> <br>
-                <a href="pabo.php">/pabo/ - PABO</a> <br>
-                <a href="trv.php">/trv/ - Tourism Management</a> <br>
-                <a href="$.php">/$/ - Business Studies</a> <br>
-                <a href="muz.php">/muz/ - Muziekopleiding</a> <br>
-                <a href="miro.php">/miro/ - Medical Imaging / Radiation Oncology</a> <br>
-                <br>
-                <span>Misc</span>
-                <br>
-                <a href="">/vg/ - Video Games</a> <br>
-                <a href="">/new/ - Nieuws</a> <br>
-                <br>
-                <span>The Dark Zone</span>
-                <br>
-                <a href="">/x/ - Illegale Stickers</a> <br>
-                <a href="">/net/ - Netwerk</a> <br>
-                <a href="">/an/ - Antwoorden</a>
-            </nav>
+            <?php require APPROOT . '/view/include/nav.php'; ?>
 
             <section id="main">
 
-                <h1 id="boardTitle">/trv/ - Tourism Management</h1>
+                <h1 id="boardTitle">/miro/ - Medical Imaging Radiation Oncology </h1>
 
                 <br>
 

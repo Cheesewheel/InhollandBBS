@@ -92,7 +92,7 @@
             $this->view('boards/net', $data);
         }
 
-        public function c(){
+        public function s(){
             $data = [
                 'title' => '/s/ - Stickers'
             ];
