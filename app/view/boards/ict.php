@@ -1,5 +1,4 @@
-<html>
-    <head>
+<?php require APPROOT . '/view/include/header.php'; ?>
         <title>
             /ict/ - Informatica
         </title>
@@ -8,86 +7,31 @@
             body{
                 background-color: #1E1E1E;
                 color: #34FF26;
-                font-family: courier;
             }
 
             a:link, a:visited, a:link:active, a:visited:active{
                 color: green;               
-            }
-            
-            #header{
-                text-align: center;
-            }
-
-            #title{
-                width 100px;
-                font-size: 1em;
-            }
-
-
-            #subTitle{
-                font-size: 0.8em; 
-            }
-
-            #login{
-                float: right;
-            }
-
-            #content{
-
-            }
+            }            
 
             #navbar{
                 border: double green;
-                padding: 1em;
-                width: 150px;
                 color: #34FF26;
-                float: left;
-                position: fixed;
             } 
 
             #main{
                 border: double green;
-                padding: 1em;
-                left: 200px;
-                width: calc(100% - 250px);
-                position: relative;
-            }    
-
-            #boardTitle{
-                width: 300px;
-                margin:auto;
-                text-align: center;
-            }  
+            }                 
 
             #threadForm{
-                width: 300px;
-                margin: auto;
-                margin-bottom: 1em;
-                padding: 1em;
                 border: double green;
-            }
-
-            #comment{
-                height: 6em;
-                width: 15em;
-            }
-
-            .thread{
-                margin-bottom: 2em;
             }
 
             .post{
                 border: double green;
-                padding: 1em;
-                margin: 0.5em;
-                margin-left: 2em;
             }  
 
             .OP{
-                margin-left: 0em;
                 border: double green;
-                padding: 1em;
             }          
         </style>
     </head>
@@ -101,31 +45,11 @@
         <br>
 
         <div id="content">
-            <nav id="navbar">
-                <span>Opleidingen</span>
-                <br>
-                <a href="ict.php">/ict/ - Informatica</a> <br>
-                <a href="pabo.php">/pabo/ - PABO</a> <br>
-                <a href="trv.php">/trv/ - Tourism Management</a> <br>
-                <a href="$.php">/$/ - Business Studies</a> <br>
-                <a href="muz.php">/muz/ - Muziekopleiding</a> <br>
-                <a href="miro.php">/miro/ - Medical Imaging Radiation Oncology</a> <br>
-                <br>
-                <span>Misc</span>
-                <br>
-                <a href="">/vg/ - Video Games</a> <br>
-                <a href="">/new/ - Nieuws</a> <br>
-                <br>
-                <span>The Dark Zone</span>
-                <br>
-                <a href="">/x/ - Illegale Stickers</a> <br>
-                <a href="">/net/ - Netwerk</a> <br>
-                <a href="">/an/ - Antwoorden</a>
-            </nav>
+            <?php require APPROOT . '/view/include/nav.php'; ?>
 
             <section id="main">
 
-                <h1 id="boardTitle">/ict/ - Informatica</h1>
+                <h1 id="boardTitle"><?php echo $data['title']; ?></h1>
 
                 <br>
 

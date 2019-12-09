@@ -27,7 +27,7 @@ a:link, a:visited, a:link:active, a:visited:active{
 }
 
 #content{
-    
+    width: 100%;
 }
 
 #navbar{
@@ -48,10 +48,10 @@ a:link, a:visited, a:link:active, a:visited:active{
 }    
 
 #boardTitle{
-    width: 450px;
+    width: 300px;
     margin:auto;
     text-align: center;
-}  
+}   
 
 #threadForm{
     width: 300px;
