@@ -109,7 +109,7 @@
                 <a href="trv.php">/trv/ - Tourism Management</a> <br>
                 <a href="$.php">/$/ - Business Studies</a> <br>
                 <a href="muz.php">/muz/ - Muziekopleiding</a> <br>
-                <a href="">/miro/ - MIRO</a> <br>
+                <a href="miro.php">/miro/ - Medical Imaging Radiation Oncology</a> <br>
                 <br>
                 <span>Misc</span>
                 <br>

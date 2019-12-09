@@ -1,18 +1,18 @@
 <html>
     <head>
         <title>
-            /trv/ - Tourism Management
+            Test
         </title>
 
         <style>
             body{
-                background-color: #E1C699;
-                color: black;
+                background-color: #1E1E1E;
+                color: #34FF26;
                 font-family: courier;
             }
 
             a:link, a:visited, a:link:active, a:visited:active{
-                color: black;               
+                color: green;               
             }
             
             #header{
@@ -38,16 +38,16 @@
             }
 
             #navbar{
-                border: double blue;
+                border: double green;
                 padding: 1em;
                 width: 150px;
-                color: black;
+                color: #34FF26;
                 float: left;
                 position: fixed;
             } 
 
             #main{
-                border: double blue;
+                border: double green;
                 padding: 1em;
                 left: 200px;
                 width: calc(100% - 250px);
@@ -55,7 +55,7 @@
             }    
 
             #boardTitle{
-                width: 450px;
+                width: 300px;
                 margin:auto;
                 text-align: center;
             }  
@@ -65,7 +65,7 @@
                 margin: auto;
                 margin-bottom: 1em;
                 padding: 1em;
-                border: double blue;
+                border: double green;
             }
 
             #comment{
@@ -78,7 +78,7 @@
             }
 
             .post{
-                border: double blue;
+                border: double green;
                 padding: 1em;
                 margin: 0.5em;
                 margin-left: 2em;
@@ -86,7 +86,7 @@
 
             .OP{
                 margin-left: 0em;
-                border: double blue;
+                border: double green;
                 padding: 1em;
             }          
         </style>
@@ -113,6 +113,7 @@
                 <br>
                 <span>Misc</span>
                 <br>
+                <a href="">/b/ - Bier</a> <br>
                 <a href="">/vg/ - Video Games</a> <br>
                 <a href="">/new/ - Nieuws</a> <br>
                 <br>
@@ -125,7 +126,7 @@
 
             <section id="main">
 
-                <h1 id="boardTitle">/trv/ - Tourism Management</h1>
+                <h1 id="boardTitle">Test</h1>
 
                 <br>
 
