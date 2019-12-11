@@ -99,5 +99,12 @@
 
             $this->view('boards/s', $data);
         }
-        
+
+        public function new(){
+            $data = [
+                'title' => '/new/ - Nieuws'
+            ];
+
+            $this->view('boards/new', $data);
+        }        
     }
