@@ -10,6 +10,7 @@
     <br>
     <span class="category">Misc</span>
     <br>
+    <a href="b">/b/ - Bier</a> <br>
     <a href="vg">/vg/ - Video Games</a> <br>
     <a href="new">/new/ - Nieuws</a> <br>
     <br>
