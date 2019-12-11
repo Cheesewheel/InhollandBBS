@@ -1,47 +1,33 @@
-<?php require APPROOT . '/view/include/header.php'; ?>
+<?php require APPROOT . '/view/include/head.php'; ?>
         <title>
             /ict/ - Informatica
         </title>
 
-        <style>
-            body{
-                background-color: #1E1E1E;
-                color: #34FF26;
-            }
-
-            a:link, a:visited, a:link:active, a:visited:active{
-                color: green;               
-            }            
-
+        <style>            
             #navbar{
-                border: double green;
-                color: #34FF26;
+                border: double #39ff14;
             } 
 
             #main{
-                border: double green;
+                border: double #39ff14;
             }                 
 
             #threadForm{
-                border: double green;
+                border: double #39ff14;
             }
 
             .post{
-                border: double green;
+                border: double #39ff14;
             }  
 
             .OP{
-                border: double green;
+                border: double #39ff14;
             }          
         </style>
     </head>
 
     <body>
-        <div id="header">
-            <span id="title">Inholland BBS</span> <br>
-            <span id="subTitle">By Koen Wijker 561487</span>
-            <a id="login" href="..\users\login.php">Login</a>
-        </div>
+        <?php require APPROOT . '/view/include/header.php'; ?>
         <br>
 
         <div id="content">

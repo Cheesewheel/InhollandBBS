@@ -5,16 +5,19 @@ body{
 }
 
 a:link, a:visited, a:link:active, a:visited:active{
-    color: black;               
+    color: black;
+    text-decoration: none;               
 }
 
 #header{
     text-align: center;
+    size: 3em;
 }
 
 #title{
-    width: 100px;
+    width: 400px;
     font-size: 1em;
+    text-align: center;
 }
 
 
@@ -39,6 +42,10 @@ a:link, a:visited, a:link:active, a:visited:active{
     position: fixed;
 } 
 
+.category{
+    font-weight: bold;
+}
+
 #main{
     border: double green;
     padding: 1em;
@@ -48,7 +55,7 @@ a:link, a:visited, a:link:active, a:visited:active{
 }    
 
 #boardTitle{
-    width: 300px;
+    width: 60%;
     margin:auto;
     text-align: center;
 }   
