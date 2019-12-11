@@ -1,7 +1,7 @@
 <?php require APPROOT . '/view/include/head.php'; ?>
 
         <title>
-        <?php echo SITENAME; ?>
+            <?php echo SITENAME; ?>
         </title>
 
         <style>
