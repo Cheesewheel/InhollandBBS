@@ -37,7 +37,7 @@
     <body>
         <div id="content" >
             <h1 id="header"><?php echo $data['title']; ?></h1>
-            <img id="logo" src='img/inhollandbbs.jpg'>
+            <img id="logo" src='../PHP1/img/inhollandbbs.jpg'>
 
             <p class="subTitle">
                 To the unofficial InHolland Haarlem BBS
