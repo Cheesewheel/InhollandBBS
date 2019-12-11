@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>
-            Test
+            Testlol
         </title>
 
         <style>
