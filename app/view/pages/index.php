@@ -68,8 +68,5 @@
                 <a href="boards/s">/s/ - Stickers</a>
             </nav>
         </div>
-
-
-    </body>
 <?php require APPROOT . '/view/include/footer.php'; ?>
 

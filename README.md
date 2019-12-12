@@ -1,2 +1,2 @@
-# PHP1
-PHP1 opdracht
+# PHP1 Eindopdracht
+InHolland BBS
