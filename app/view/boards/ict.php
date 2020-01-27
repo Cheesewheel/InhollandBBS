@@ -5,23 +5,23 @@
 
         <style>            
             #navbar{
-                border: double #39ff14;
+                border: double brown;
             } 
 
             #main{
-                border: double #39ff14;
+                border: double brown;
             }                 
 
             #threadForm{
-                border: double #39ff14;
+                border: double brown;
             }
 
             .post{
-                border: double #39ff14;
+                border: double brown;
             }  
 
             .OP{
-                border: double #39ff14;
+                border: double brown;
             }          
         </style>
     </head>

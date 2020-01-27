@@ -1,4 +1,5 @@
 <?php require APPROOT . '/view/include/head.php'; ?>
+<?php require APPROOT . '/view/include/header.php'; ?>
 
         <title>
             <?php echo SITENAME; ?>

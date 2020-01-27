@@ -1,22 +1,22 @@
 <nav id="navbar">
     <span class="category">Opleidingen</span>
     <br>
-    <a href="ict">/ict/ - Informatica</a> <br>
-    <a href="pabo">/pabo/ - PABO</a> <br>
-    <a href="trv">/trv/ - Tourism Management</a> <br>
-    <a href="biz">/biz/ - Business Studies</a> <br>
-    <a href="muz">/muz/ - Muziekopleiding</a> <br>
-    <a href="miro">/miro/ - Medical Imaging Radiation Oncology</a> <br>
+    <a href="<?php echo URLROOT; ?>/boards/ict">/ict/ - Informatica</a> <br>
+    <a href="<?php echo URLROOT; ?>/boards/pabo">/pabo/ - PABO</a> <br>
+    <a href="<?php echo URLROOT; ?>/boards/trv">/trv/ - Tourism Management</a> <br>
+    <a href="<?php echo URLROOT; ?>/boards/biz">/biz/ - Business Studies</a> <br>
+    <a href="<?php echo URLROOT; ?>/boards/muz">/muz/ - Muziekopleiding</a> <br>
+    <a href="<?php echo URLROOT; ?>/boards/miro">/miro/ - Medical Imaging Radiation Oncology</a> <br>
     <br>
     <span class="category">Misc</span>
     <br>
-    <a href="b">/b/ - Bier</a> <br>
-    <a href="vg">/vg/ - Video Games</a> <br>
-    <a href="new">/new/ - Nieuws</a> <br>
+    <a href="<?php echo URLROOT; ?>/boards/b">/b/ - Bier</a> <br>
+    <a href="<?php echo URLROOT; ?>/boards/vg">/vg/ - Video Games</a> <br>
+    <a href="<?php echo URLROOT; ?>/boards/new">/new/ - Nieuws</a> <br>
     <br>
-    <span class="category">The Dark Zone</span>
+    <span class="<?php echo URLROOT; ?>/boards/category">The Dark Zone</span>
     <br>
-    <a href="x">/x/ - Toetsen & Antwoorden</a> <br>
-    <a href="net">/net/ - Netwerk</a> <br>
-    <a href="s">/s/ - Stickers</a>
+    <a href="<?php echo URLROOT; ?>/boards/x">/x/ - Toetsen & Antwoorden</a> <br>
+    <a href="<?php echo URLROOT; ?>/boards/net">/net/ - Netwerk</a> <br>
+    <a href="<?php echo URLROOT; ?>/boards/s">/s/ - Stickers</a>
 </nav>

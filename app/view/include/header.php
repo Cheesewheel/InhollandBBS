@@ -1,5 +1,20 @@
-<div id="header">
-    <span id="title"><a href="../">Inholland BBS</a></span> <br>
-    <span id="subTitle">By Koen Wijker 561487</span>
-    <a id="login" href="..\users\login.php">Login</a>
-</div>
+<header id="header">
+    <a id="home" href="<?php echo URLROOT; ?>">
+        Home
+    </a>     
+
+    <?php if(isset($_SESSION['userId'])) : ?>
+        <a id="login" href="<?php echo URLROOT; ?>/users/logout" class="buttonStyle">
+        Logout
+        </a>
+
+            
+        <?php else : ?>
+
+        <a id="login" href="<?php echo URLROOT; ?>/users/login" class="buttonStyle">
+        Login
+        </a>
+
+    <?php endif; ?>
+
+</header>

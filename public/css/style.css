@@ -20,13 +20,13 @@ a:link, a:visited, a:link:active, a:visited:active{
     text-align: center;
 }
 
-
 #subTitle{
     font-size: 0.8em; 
 }
 
-#login{
-    float: right;
+.headerNav{
+    list-style-type: none;
+    text-align: center;
 }
 
 #content{
@@ -88,4 +88,26 @@ a:link, a:visited, a:link:active, a:visited:active{
     margin-left: 0em;
     border: double green;
     padding: 1em;
-}          
+}
+
+#loginHeader{
+    text-align: center;
+}
+
+.cleanForm{
+    width: 500px;
+    margin:auto;
+    display: block;
+    text-align: center;
+    border: double black;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.invalidFeedback{    
+    color:red;
+}
+
+#login{
+    
+}
