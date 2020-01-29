@@ -20,25 +20,22 @@
             // Get the threads for this board
             $threads = $this->getThreads($boardId);
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // Init data
-                $thread = new ThreadModel();
-                $thread->setSubject(trim($_POST['subject']));
-                $thread->setUserId($_SESSION['userId']);
-                $thread->setImgUrl(trim("img.jpg"));
-                $thread->setBoardId($boardId);
-                $thread->setComment(trim($_POST['comment']));
-
-                $this->createThread($thread);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;                
+                $files = $_FILES;
                 
+                // Call method to create thread
+                $thread = $this->createThread($post, $files, $boardId);                
             }
 
             // Init data
             $data = [
                 'title' => '/ict/ - Informatica',
-                'threads' => $threads
+                'threads' => $threads,
+                'subjectError' => '',
+                'commentError' => '',
+                'imageError' => ''
             ];
 
             
@@ -53,25 +50,20 @@
             // Get the threads for this board
             $threads = $this->getThreads($boardId);
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // Init data
-                $thread = new ThreadModel();
-                $thread->setSubject(trim($_POST['subject']));
-                $thread->setUserId($_SESSION['userId']);
-                $thread->setImgUrl(trim("img.jpg"));
-                $thread->setBoardId($boardId);
-                $thread->setComment(trim($_POST['comment']));
-
-                $this->createThread($thread);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;
+                $files = $_FILES;
                 
+                // Call method to create thread
+                $thread = $this->createThread($post, $files, $boardId);                
             }
 
             // Init data
             $data = [
                 'title' => '/pabo/ - PABO',
-                'threads' => $threads
+                'threads' => $threads,
+                'subjectError' => ''
             ];
 
             $this->view('boards/pabo', $data);
@@ -84,20 +76,14 @@
            // Get the threads for this board
            $threads = $this->getThreads($boardId);
 
-           if($_SERVER['REQUEST_METHOD'] == 'POST'){
-               $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-               // Init data
-               $thread = new ThreadModel();
-               $thread->setSubject(trim($_POST['subject']));
-               $thread->setUserId($_SESSION['userId']);
-               $thread->setImgUrl(trim("img.jpg"));
-               $thread->setBoardId($boardId);
-               $thread->setComment(trim($_POST['comment']));
-
-               $this->createThread($thread);
-               
-           }
+           if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;
+                $files = $_FILES;
+                
+                // Call method to create thread
+                $thread = $this->createThread($post, $files, $boardId);                
+            }
 
            // Init data
            $data = [
@@ -115,19 +101,13 @@
             // Get the threads for this board
             $threads = $this->getThreads($boardId);
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // Init data
-                $thread = new ThreadModel();
-                $thread->setSubject(trim($_POST['subject']));
-                $thread->setUserId($_SESSION['userId']);
-                $thread->setImgUrl(trim("img.jpg"));
-                $thread->setBoardId($boardId);
-                $thread->setComment(trim($_POST['comment']));
-
-                $this->createThread($thread);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;
+                $files = $_FILES;
                 
+                // Call method to create thread
+                $thread = $this->createThread($post, $files, $boardId);                
             }
 
             // Init data
@@ -146,19 +126,13 @@
             // Get the threads for this board
             $threads = $this->getThreads($boardId);
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // Init data
-                $thread = new ThreadModel();
-                $thread->setSubject(trim($_POST['subject']));
-                $thread->setUserId($_SESSION['userId']);
-                $thread->setImgUrl(trim("img.jpg"));
-                $thread->setBoardId($boardId);
-                $thread->setComment(trim($_POST['comment']));
-
-                $this->createThread($thread);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;
+                $files = $_FILES;
                 
+                // Call method to create thread
+                $thread = $this->createThread($post, $files, $boardId);                
             }
 
             // Init data
@@ -177,19 +151,13 @@
             // Get the threads for this board
             $threads = $this->getThreads($boardId);
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // Init data
-                $thread = new ThreadModel();
-                $thread->setSubject(trim($_POST['subject']));
-                $thread->setUserId($_SESSION['userId']);
-                $thread->setImgUrl(trim("img.jpg"));
-                $thread->setBoardId($boardId);
-                $thread->setComment(trim($_POST['comment']));
-
-                $this->createThread($thread);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;
+                $files = $_FILES;
                 
+                // Call method to create thread
+                $thread = $this->createThread($post, $files, $boardId);                
             }
 
             // Init data
@@ -208,19 +176,13 @@
             // Get the threads for this board
             $threads = $this->getThreads($boardId);
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // Init data
-                $thread = new ThreadModel();
-                $thread->setSubject(trim($_POST['subject']));
-                $thread->setUserId($_SESSION['userId']);
-                $thread->setImgUrl(trim("img.jpg"));
-                $thread->setBoardId($boardId);
-                $thread->setComment(trim($_POST['comment']));
-
-                $this->createThread($thread);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;
+                $files = $_FILES;
                 
+                // Call method to create thread
+                $thread = $this->createThread($post, $files, $boardId);                
             }
 
             // Init data
@@ -239,19 +201,13 @@
             // Get the threads for this board
             $threads = $this->getThreads($boardId);
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // Init data
-                $thread = new ThreadModel();
-                $thread->setSubject(trim($_POST['subject']));
-                $thread->setUserId($_SESSION['userId']);
-                $thread->setImgUrl(trim("img.jpg"));
-                $thread->setBoardId($boardId);
-                $thread->setComment(trim($_POST['comment']));
-
-                $this->createThread($thread);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;
+                $files = $_FILES;
                 
+                // Call method to create thread
+                $thread = $this->createThread($post, $files, $boardId);                
             }
 
             // Init data
@@ -270,19 +226,13 @@
             // Get the threads for this board
             $threads = $this->getThreads($boardId);
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // Init data
-                $thread = new ThreadModel();
-                $thread->setSubject(trim($_POST['subject']));
-                $thread->setUserId($_SESSION['userId']);
-                $thread->setImgUrl(trim("img.jpg"));
-                $thread->setBoardId($boardId);
-                $thread->setComment(trim($_POST['comment']));
-
-                $this->createThread($thread);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;
+                $files = $_FILES;
                 
+                // Call method to create thread
+                $thread = $this->createThread($post, $files, $boardId);                
             }
 
             // Init data
@@ -301,19 +251,13 @@
             // Get the threads for this board
             $threads = $this->getThreads($boardId);
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // Init data
-                $thread = new ThreadModel();
-                $thread->setSubject(trim($_POST['subject']));
-                $thread->setUserId($_SESSION['userId']);
-                $thread->setImgUrl(trim("img.jpg"));
-                $thread->setBoardId($boardId);
-                $thread->setComment(trim($_POST['comment']));
-
-                $this->createThread($thread);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;
+                $files = $_FILES;
                 
+                // Call method to create thread
+                $thread = $this->createThread($post, $files, $boardId);                
             }
 
             // Init data
@@ -332,19 +276,13 @@
             // Get the threads for this board
             $threads = $this->getThreads($boardId);
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // Init data
-                $thread = new ThreadModel();
-                $thread->setSubject(trim($_POST['subject']));
-                $thread->setUserId($_SESSION['userId']);
-                $thread->setImgUrl(trim("img.jpg"));
-                $thread->setBoardId($boardId);
-                $thread->setComment(trim($_POST['comment']));
-
-                $this->createThread($thread);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;
+                $files = $_FILES;
                 
+                // Call method to create thread
+                $thread = $this->createThread($post, $files, $boardId);                
             }
 
             // Init data
@@ -387,12 +325,78 @@
             return $threads;
         }
 
-        public function createThread($thread){
+        public function createThread($post, $files, $boardId){
+            $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);            
+            $imageUrl = $this->uploadImage($files['image']);
+
+            // Init data
+            $thread = new ThreadModel();
+            $thread->setSubject(trim($_POST['subject']));
+            $thread->setUserId($_SESSION['userId']);
+
+            if(!empty($imageUrl)){
+                $thread->setImgUrl($imageUrl);
+            } else {
+                $thread->setImgUrl("");
+            }            
+
+            $thread->setBoardId($boardId);
+            $thread->setComment(trim($_POST['comment']));            
+
             $this->threadDAO->insertThread($thread);
+            
+            return $thread;
         }
 
         public function getReplyCount($thread){
             $replies = $this->threadDAO->getReplyCount($thread);
             return $replies;
+        }
+
+        public function uploadImage($image){
+            //die(var_dump($image));
+            $targetDir = "./img/threads/";
+            $newImageName = bin2hex(openssl_random_pseudo_bytes(20));  
+            $targetFile = $targetDir . basename($image['name']);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
+            $imageExtension = explode(".", $image['name']);
+
+            // Check if image is really an image    
+            $check = getimagesize($image["tmp_name"]);       
+            if($check !== false) {
+                //die("File is an image");
+                $uploadOk = 1;
+            } else {
+                die(var_dump($image));
+                $uploadOk = 0;
+            }
+
+            // Check file size
+            if ($image["size"] > 5000000) {
+                die("Sorry, your file is too large.");
+                $uploadOk = 0;
+            }
+
+            // Allow certain file formats
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+                die("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+                $uploadOk = 0;
+            }
+
+            if ($uploadOk == 0) {
+                die("Sorry, your file was not uploaded.");
+            // if everything is ok, try to upload file
+            } else {
+                // Generate random name for image
+                $targetFile = $targetDir . basename($newImageName) . "." . end($imageExtension);
+                $url = basename($newImageName) . "." . end($imageExtension);
+                
+                if (move_uploaded_file($image["tmp_name"], $targetFile)) {
+                    return $url;                    
+                } else {
+                    die("Sorry, there was an error uploading your file.");
+                }
+            }
         }
     }

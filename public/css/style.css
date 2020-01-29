@@ -62,7 +62,7 @@ a:link, a:visited, a:link:active, a:visited:active{
 
 #threadForm{
     width: 300px;
-    height: 150px;
+    
     margin: auto;
     margin-bottom: 1em;
     padding: 1em;
@@ -120,6 +120,7 @@ a:link, a:visited, a:link:active, a:visited:active{
 
 .image{
     max-width: 200px;
+    max-height: 200px;
 }
 
 footer{
