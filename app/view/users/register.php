@@ -62,6 +62,8 @@
 					* required
 				</label>
 
+                <div class="g-recaptcha" data-sitekey="6LfQ2dMUAAAAAHp7Cxfw07hYq-7j0RtTB6V9RYEg"></div>
+                <span class="invalidFeedback"><?php echo $data['captchaError'] ?></span>
 			
 
 			<br>

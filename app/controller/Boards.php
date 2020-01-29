@@ -355,13 +355,44 @@
 
             $this->view('boards/s', $data);
         }
+
+        public function displayThreads($threads){
+            foreach($threads as $thread){
+                echo '
+                <div class="thread"> 
+                    <div class="OP" class="post">
+                        <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$thread->getImgUrl().'"></img>
+                        <span class="opHeader" class="postId"> No.' . $thread->getThreadId() .'<span>
+                        <span class="opHeader" class="postSubject">' . $thread->getSubject() . '<span>
+                        <span class="opHeader" class="posterName">' . $thread->getStudentNumber() . '</span>
+                        <span class="opHeader" class="postDateTime">' . $thread->getTimeCreated() . '</span>
+                        <span class="opHeader" class="postDateTime">Replies: ' .  $thread->getReplies()  . '</span>
+                        <a class="opHeader" class="viewThread" href="">View</a>
+                        <br>
+                        <p>' . $thread->getComment() . '</p>
+                    </div>
+                </div>
+                ';
+            }
+        }
        
         public function getThreads($boardId){
             $threads = $this->threadDAO->getThreads($boardId);
+
+            foreach($threads as $thread){
+                $replies = (array)$this->getReplyCount($thread);
+                $thread->setReplies($replies["COUNT(postId)"]);            
+            }
+
             return $threads;
         }
 
         public function createThread($thread){
             $this->threadDAO->insertThread($thread);
+        }
+
+        public function getReplyCount($thread){
+            $replies = $this->threadDAO->getReplyCount($thread);
+            return $replies;
         }
     }

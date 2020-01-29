@@ -52,23 +52,7 @@
                 <?php require APPROOT . '/view/include/threadForm.php'; ?>
 
                 <?php 
-                    //var_dump($data['threads']);
-                    foreach($data['threads'] as $thread){
-                        echo '
-                        <div class="thread"> 
-                            <div class="OP" class="post">
-                                <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$thread->getImgUrl().'"></img>
-                                <span class="opHeader" class="postId">' . $thread->getThreadId() .'<span>
-                                <span class="opHeader" class="postSubject">' . $thread->getSubject() . '<span>
-                                <span class="opHeader" class="posterName">' . $thread->getStudentNumber() . '</span>
-                                <span class="opHeader" class="postDateTime">' . $thread->getTimeCreated() . '</span>
-                                <a class="opHeader" class="viewThread" href="">View</a>
-                                <br>
-                                <p>' . $thread->getComment() . '</p>
-                            </div>
-                        </div>
-                        ';
-                    }
+                    echo $this->displayThreads($data['threads']);                    
                 ?>
 
             </section>

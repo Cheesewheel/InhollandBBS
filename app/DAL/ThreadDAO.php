@@ -60,7 +60,18 @@
         }
 
         public function getReplyCount($thread){
-            
+            $this->db->query("  SELECT COUNT(postId)
+                                FROM posts
+                                WHERE threadId = :threadId
+                            ");
+
+            // Bind values
+            $this->db->bind(':threadId', $thread->getThreadId());
+
+            // Execute query and put result in variable
+            $replies = $this->db->single();
+
+            return $replies;
         }
         
     } 

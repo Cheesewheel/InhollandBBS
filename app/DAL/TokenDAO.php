@@ -29,7 +29,7 @@
         // Check the tokenType of token
         public function checkTokenType($token){
             // Prepare query0
-            $this->db->query('  SELECT (tokenType) FROM Tokens
+            $this->db->query('  SELECT (tokenType) FROM tokens
                                 WHERE token = :token');
 
             // Bind values
@@ -46,7 +46,7 @@
         // Delete token
         public function deleteToken($token){
             // Prepare query
-            $this->db->query('  DELETE FROM Tokens
+            $this->db->query('  DELETE FROM tokens
                                 WHERE token = :token');
 
             // Bind values

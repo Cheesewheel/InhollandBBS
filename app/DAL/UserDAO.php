@@ -62,10 +62,10 @@ class UserDAO{
     public function newPassword($token, $password){
         // Prepare query
         $this->db->query('  UPDATE users
-                            INNER JOIN Tokens
-                                ON User.userMail = Tokens.email
-                            SET User.userPassword = :password
-                            WHERE Tokens.token = :token');
+                            INNER JOIN tokens
+                                ON users.email = tokens.email
+                            SET users.password = :password
+                            WHERE tokens.token = :token');
 
         // Bind values
         $this->db->bind(':password', $password);
@@ -81,11 +81,11 @@ class UserDAO{
 
     public function verificateUser($token){
         // Prepare query
-        $this->db->query('  UPDATE User
-                            INNER JOIN Tokens
-                                ON User.userMail = Tokens.email
-                            SET User.verified = "1"
-                            WHERE Tokens.token = :token');
+        $this->db->query('  UPDATE users
+                            INNER JOIN tokens
+                                ON users.email = tokens.email
+                            SET users.verified = "1"
+                            WHERE tokens.token = :token');
 
         // Bind values
         $this->db->bind(':token', $token);

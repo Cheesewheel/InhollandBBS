@@ -33,7 +33,8 @@
                     'emailError' => '',
                     'studentNumberError' => '',
                     'passwordError' => '',
-                    'passwordConfirmError' => ''
+                    'passwordConfirmError' => '',
+                    'captchaError' => ''
                 ];
 
                 // Validate email not empty
@@ -85,8 +86,26 @@
                     }
                 }
 
-                // Make sure errors are empty
-                if(empty($data['emailError']) && empty($data['nameError']) && empty($data['studentNumberError'])&& empty($data['passwordError']) && empty($data['passwordConfirmError'])){
+                if(!empty($_POST['g-recaptcha-response'])){
+                    // Get the captcha response
+                    $captcha=$_POST['g-recaptcha-response'];
+
+                    // Secret captcha key
+                    $secretKey = "6LfQ2dMUAAAAAPaFBz5KSd3Cjgj2PASgprn9_c3H";
+
+                    // Get IP
+                    $ip = $_SERVER['REMOTE_ADDR'];
+
+                    // Post request to server
+                    $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
+                    $response = file_get_contents($url);
+                    $responseKeys = json_decode($response,true);
+                  }else{
+                      $data['captchaError'] = 'Please complete the captcha. No robots allowed';
+                  }
+
+                // Make sure errors are empty and captcha response is success
+                if(empty($data['emailError']) && empty($data['nameError']) && empty($data['studentNumberError'])&& empty($data['passwordError']) && empty($data['passwordConfirmError']) && empty($data['captchaError']) && $responseKeys["success"]){
                     // Validated
 
                     // Hash password
@@ -111,6 +130,8 @@
 
                         // Send email
                         mail($user->getEmail(), $subject, $message);
+
+                        // Direct to login page
                         $this->view('users/login', $data);
                     } else {
                         die('Something went wrong');
@@ -217,6 +238,16 @@
             }
         }
 
+        public function profile(){
+            // Init data
+            $data = [
+                'title' => 'Forgot password?',
+                'user' => ''
+            ];
+
+            $this->view('users/profile', $data);
+        }
+
         public function forgot(){
             // Init data
             $data = [
@@ -289,7 +320,6 @@
                 $token = "";
             }
 
-
             // Sanitize user input and declare password validation regex
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $passwordValidation = "/^\S*(?=\S{6,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/";
@@ -341,7 +371,7 @@
                             $this->view('users/newpassword', $data);
                         }
                     } else {
-                        $data['error'] = "Password needs to be at leat 6 characters long";
+                        $data['error'] = "Password needs to be at least 6 characters long";
 
                         //Load UI
                         $this->view('users/newpassword', $data);

@@ -10,6 +10,6 @@
             <span class="invalidFeedback"><?php echo $data['emailError'] ?></span>
             <input id="send" type="submit" value="send">
         </form>
-        </section>
+    </section>
 
 <?php require APPROOT . '/view/include/footer.php'; ?>

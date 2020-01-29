@@ -128,3 +128,7 @@ footer{
     bottom: 0;
     position: relative;
 }
+
+.profileHeader{
+    font-weight: bold;
+}
