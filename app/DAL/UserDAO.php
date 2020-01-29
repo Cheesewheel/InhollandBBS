@@ -8,7 +8,7 @@ class UserDAO{
 
     public function register($user){
         // Insert into table user
-        $this->db->query('INSERT INTO user (name, lastName, studentNumber, email, password)
+        $this->db->query('INSERT INTO users (name, lastName, studentNumber, email, password)
                           VALUES (:name, :lastName, :studentNumber, :email, :password)');
         // Bind values
         $this->db->bind(':name', $user->getName());
@@ -27,7 +27,7 @@ class UserDAO{
 
     // Login user
     public function login($user){
-        $this->db->query('SELECT * FROM user WHERE email = :email');
+        $this->db->query('SELECT * FROM users WHERE email = :email');
         $this->db->bind(':email', $user->getEmail());
 
         $row = $this->db->single();
@@ -43,7 +43,7 @@ class UserDAO{
     //Find user by email
     public function findUserByEmail($email){
         // Prepare query
-        $this->db->query('SELECT * FROM user WHERE email = :email');
+        $this->db->query('SELECT * FROM users WHERE email = :email');
 
         //Bind values
         $this->db->bind(':email', $email);
@@ -61,7 +61,7 @@ class UserDAO{
 
     public function newPassword($token, $password){
         // Prepare query
-        $this->db->query('  UPDATE User
+        $this->db->query('  UPDATE users
                             INNER JOIN Tokens
                                 ON User.userMail = Tokens.email
                             SET User.userPassword = :password

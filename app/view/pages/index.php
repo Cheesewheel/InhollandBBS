@@ -38,7 +38,7 @@
     <body>
         <div id="content" >
             <h1 id="header"><?php echo $data['title']; ?></h1>
-            <img id="logo" src='../PHP1/img/inhollandbbs.jpg'>
+            <img id="logo" src= "<?php echo URLROOT ?>/img/inhollandbbs.jpg">
 
             <p class="subTitle">
                 To the unofficial InHolland Haarlem BBS
@@ -49,24 +49,24 @@
             <nav id="nav">
                 <span class="category">Opleidingen</span>
                 <br>
-                <a href="boards/ict">/ict/ - Informatica</a> <br>
-                <a href="boards/pabo">/pabo/ - PABO</a> <br>
-                <a href="boards/trv">/trv/ - Tourism Management</a> <br>
-                <a href="boards/biz">/biz/ - Business Studies</a> <br>
-                <a href="boards/muz">/muz/ - Muziekopleiding</a> <br>
-                <a href="boards/miro">/miro/ - Medical Imaging Radiation Oncology</a> <br>
+                <a href="<?php echo URLROOT ?>/boards/ict">/ict/ - Informatica</a> <br>
+                <a href="<?php echo URLROOT ?>/boards/pabo">/pabo/ - PABO</a> <br>
+                <a href="<?php echo URLROOT ?>/boards/trv">/trv/ - Tourism Management</a> <br>
+                <a href="<?php echo URLROOT ?>/boards/biz">/biz/ - Business Studies</a> <br>
+                <a href="<?php echo URLROOT ?>/boards/muz">/muz/ - Muziekopleiding</a> <br>
+                <a href="<?php echo URLROOT ?>/boards/miro">/miro/ - Medical Imaging Radiation Oncology</a> <br>
                 <br>
                 <span class="category">Misc</span>
                 <br>
-                <a href="boards/b">/b/ - Bier</a> <br>
-                <a href="boards/vg">/vg/ - Video Games</a> <br>
-                <a href="boards/new">/new/ - Nieuws</a> <br>
+                <a href="<?php echo URLROOT ?>/boards/b">/b/ - Bier</a> <br>
+                <a href="<?php echo URLROOT ?>/boards/vg">/vg/ - Video Games</a> <br>
+                <a href="<?php echo URLROOT ?>/boards/new">/new/ - Nieuws</a> <br>
                 <br>
                 <span class="category">The Dark Zone</span>
                 <br>
-                <a href="boards/x">/x/ - Toetsen & Antwoorden</a> <br>
-                <a href="boards/net">/net/ - Netwerk</a> <br>
-                <a href="boards/s">/s/ - Stickers</a>
+                <a href="<?php echo URLROOT ?>/boards/x">/x/ - Toetsen & Antwoorden</a> <br>
+                <a href="<?php echo URLROOT ?>/boards/net">/net/ - Netwerk</a> <br>
+                <a href="<?php echo URLROOT ?>/boards/s">/s/ - Stickers</a>
             </nav>
         </div>
 <?php require APPROOT . '/view/include/footer.php'; ?>

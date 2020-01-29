@@ -1,33 +1,33 @@
 <?php
     class UserModel {
-        private $Name;
-        private $LastName;
+        private $name;
+        private $lastName;
         private $studentNumber;
         private $email;
         private $password;
         private $passwordConfirm;
 
         //Get and Set for name
-        public function setName($userName){
-            $this->userName = $userName;
+        public function setName($name){
+            $this->name = $name;
         }
         public function getName(){
-            return $this->userName;
+            return $this->name;
         }
 
         //Get and Set for lastName
-        public function setLastName($userLastName){
-            $this->userLastName = $userLastName;
+        public function setLastName($lastName){
+            $this->lastName = $lastName;
         }
         public function getLastName(){
-            return $this->userLastName;
+            return $this->lastName;
         }
 
         //Get and Set for studentHummer
         public function setStudentNumber($studentNumber){
             $this->studentNumber = $studentNumber;
         }
-        public function getstudentNumber(){
+        public function getStudentNumber(){
             return $this->studentNumber;
         }
 

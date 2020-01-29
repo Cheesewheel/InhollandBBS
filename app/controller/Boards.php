@@ -1,7 +1,8 @@
 <?php  
     class Boards extends Controller {
         public function __construct(){
-            
+            $this->threadDAO = $this->dal('ThreadDAO');
+            $this->threadModel = $this->model('ThreadModel');
         }
 
         public function index(){
@@ -13,98 +14,354 @@
         }
 
         public function ict(){
+            // Declare boardId
+            $boardId = 1;
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $thread = new ThreadModel();
+                $thread->setSubject(trim($_POST['subject']));
+                $thread->setUserId($_SESSION['userId']);
+                $thread->setImgUrl(trim("img.jpg"));
+                $thread->setBoardId($boardId);
+                $thread->setComment(trim($_POST['comment']));
+
+                $this->createThread($thread);
+                
+            }
+
+            // Init data
             $data = [
-                'title' => '/ict/ - Informatica'
+                'title' => '/ict/ - Informatica',
+                'threads' => $threads
             ];
+
+            
 
             $this->view('boards/ict', $data);
         }
         
         public function pabo(){
+            // Declare boardId
+            $boardId = 2;
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $thread = new ThreadModel();
+                $thread->setSubject(trim($_POST['subject']));
+                $thread->setUserId($_SESSION['userId']);
+                $thread->setImgUrl(trim("img.jpg"));
+                $thread->setBoardId($boardId);
+                $thread->setComment(trim($_POST['comment']));
+
+                $this->createThread($thread);
+                
+            }
+
+            // Init data
             $data = [
-                'title' => '/pabo/ - PABO'
+                'title' => '/pabo/ - PABO',
+                'threads' => $threads
             ];
 
             $this->view('boards/pabo', $data);
         } 
 
         public function trv(){
-            $data = [
-                'title' => '/trv/ - Tourism Management'
-            ];
+           // Declare boardId
+           $boardId = 3;
+
+           // Get the threads for this board
+           $threads = $this->getThreads($boardId);
+
+           if($_SERVER['REQUEST_METHOD'] == 'POST'){
+               $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+               // Init data
+               $thread = new ThreadModel();
+               $thread->setSubject(trim($_POST['subject']));
+               $thread->setUserId($_SESSION['userId']);
+               $thread->setImgUrl(trim("img.jpg"));
+               $thread->setBoardId($boardId);
+               $thread->setComment(trim($_POST['comment']));
+
+               $this->createThread($thread);
+               
+           }
+
+           // Init data
+           $data = [
+               'title' => '/trv/ - Tourism Management',
+               'threads' => $threads
+           ];
 
             $this->view('boards/trv', $data);
         } 
 
         public function biz(){
+            // Declare boardId
+            $boardId = 4;
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $thread = new ThreadModel();
+                $thread->setSubject(trim($_POST['subject']));
+                $thread->setUserId($_SESSION['userId']);
+                $thread->setImgUrl(trim("img.jpg"));
+                $thread->setBoardId($boardId);
+                $thread->setComment(trim($_POST['comment']));
+
+                $this->createThread($thread);
+                
+            }
+
+            // Init data
             $data = [
-                'title' => '/biz/ - Business Studies'
+                'title' => '/biz/ - Business Studies',
+                'threads' => $threads
             ];
 
             $this->view('boards/biz', $data);
         }
         
         public function muz(){
+            // Declare boardId
+            $boardId = 5;
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $thread = new ThreadModel();
+                $thread->setSubject(trim($_POST['subject']));
+                $thread->setUserId($_SESSION['userId']);
+                $thread->setImgUrl(trim("img.jpg"));
+                $thread->setBoardId($boardId);
+                $thread->setComment(trim($_POST['comment']));
+
+                $this->createThread($thread);
+                
+            }
+
+            // Init data
             $data = [
-                'title' => '/muz/ - Muziekopleiding'
+                'title' => '/muz/ - Muziek Opleiding',
+                'threads' => $threads
             ];
 
             $this->view('boards/muz', $data);
         } 
 
         public function miro(){
+            // Declare boardId
+            $boardId = 6;
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $thread = new ThreadModel();
+                $thread->setSubject(trim($_POST['subject']));
+                $thread->setUserId($_SESSION['userId']);
+                $thread->setImgUrl(trim("img.jpg"));
+                $thread->setBoardId($boardId);
+                $thread->setComment(trim($_POST['comment']));
+
+                $this->createThread($thread);
+                
+            }
+
+            // Init data
             $data = [
-                'title' => '/miro/ - Imaging Radiation Oncology'
+                'title' => '/miro/ - Medical Imaging Radiation Oncology',
+                'threads' => $threads
             ];
 
             $this->view('boards/miro', $data);
         }
-        
-        public function vg(){
-            $data = [
-                'title' => '/vg/ - Video Games'
-            ];
-
-            $this->view('boards/vg', $data);
-        }
 
         public function b(){
+            // Declare boardId
+            $boardId = 7;
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $thread = new ThreadModel();
+                $thread->setSubject(trim($_POST['subject']));
+                $thread->setUserId($_SESSION['userId']);
+                $thread->setImgUrl(trim("img.jpg"));
+                $thread->setBoardId($boardId);
+                $thread->setComment(trim($_POST['comment']));
+
+                $this->createThread($thread);
+                
+            }
+
+            // Init data
             $data = [
-                'title' => '/b/ - Bier'
+                'title' => '/b/ - Bier',
+                'threads' => $threads
             ];
 
             $this->view('boards/b', $data);
         }
 
-        public function x(){
+        public function vg(){
+            // Declare boardId
+            $boardId = 8;
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $thread = new ThreadModel();
+                $thread->setSubject(trim($_POST['subject']));
+                $thread->setUserId($_SESSION['userId']);
+                $thread->setImgUrl(trim("img.jpg"));
+                $thread->setBoardId($boardId);
+                $thread->setComment(trim($_POST['comment']));
+
+                $this->createThread($thread);
+                
+            }
+
+            // Init data
             $data = [
-                'title' => '/x/ - Antwoorden & Toetsen'
+                'title' => '/vg/ - Video Games',
+                'threads' => $threads
+            ];
+
+            $this->view('boards/vg', $data);
+        }
+
+        public function x(){
+            // Declare boardId
+            $boardId = 9;
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $thread = new ThreadModel();
+                $thread->setSubject(trim($_POST['subject']));
+                $thread->setUserId($_SESSION['userId']);
+                $thread->setImgUrl(trim("img.jpg"));
+                $thread->setBoardId($boardId);
+                $thread->setComment(trim($_POST['comment']));
+
+                $this->createThread($thread);
+                
+            }
+
+            // Init data
+            $data = [
+                'title' => '/x/ - Toetsen & Antwoorden',
+                'threads' => $threads
             ];
 
             $this->view('boards/x', $data);
         }
 
         public function net(){
+            // Declare boardId
+            $boardId = 10;
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $thread = new ThreadModel();
+                $thread->setSubject(trim($_POST['subject']));
+                $thread->setUserId($_SESSION['userId']);
+                $thread->setImgUrl(trim("img.jpg"));
+                $thread->setBoardId($boardId);
+                $thread->setComment(trim($_POST['comment']));
+
+                $this->createThread($thread);
+                
+            }
+
+            // Init data
             $data = [
-                'title' => '/net/ - Netwerk'
+                'title' => '/net/ - Netwerk',
+                'threads' => $threads
             ];
 
             $this->view('boards/net', $data);
         }
 
         public function s(){
+            // Declare boardId
+            $boardId = 11;
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $thread = new ThreadModel();
+                $thread->setSubject(trim($_POST['subject']));
+                $thread->setUserId($_SESSION['userId']);
+                $thread->setImgUrl(trim("img.jpg"));
+                $thread->setBoardId($boardId);
+                $thread->setComment(trim($_POST['comment']));
+
+                $this->createThread($thread);
+                
+            }
+
+            // Init data
             $data = [
-                'title' => '/s/ - Stickers'
+                'title' => '/s/ - Stickers',
+                'threads' => $threads
             ];
 
             $this->view('boards/s', $data);
         }
+       
+        public function getThreads($boardId){
+            $threads = $this->threadDAO->getThreads($boardId);
+            return $threads;
+        }
 
-        public function new(){
-            $data = [
-                'title' => '/new/ - Nieuws'
-            ];
-
-            $this->view('boards/new', $data);
-        }        
+        public function createThread($thread){
+            $this->threadDAO->insertThread($thread);
+        }
     }

@@ -12,9 +12,8 @@
     <br>
     <a href="<?php echo URLROOT; ?>/boards/b">/b/ - Bier</a> <br>
     <a href="<?php echo URLROOT; ?>/boards/vg">/vg/ - Video Games</a> <br>
-    <a href="<?php echo URLROOT; ?>/boards/new">/new/ - Nieuws</a> <br>
     <br>
-    <span class="<?php echo URLROOT; ?>/boards/category">The Dark Zone</span>
+    <span class="category">The Dark Zone</span>
     <br>
     <a href="<?php echo URLROOT; ?>/boards/x">/x/ - Toetsen & Antwoorden</a> <br>
     <a href="<?php echo URLROOT; ?>/boards/net">/net/ - Netwerk</a> <br>

@@ -1,27 +1,27 @@
 <?php require APPROOT . '/view/include/head.php'; ?>
         <title>
-            /muz/ - Muziekopleiding
+            /ict/ - Informatica
         </title>
 
-        <style>
+        <style>            
             #navbar{
-                border: double purple;
+                border: double gray;
             } 
 
             #main{
-                border: double purple;
+                border: double gray;
             }                 
 
             #threadForm{
-                border: double purple;
+                border: double gray;
             }
 
             .post{
-                border: double purple;
+                border: double gray;
             }  
 
             .OP{
-                border: double purple;
+                border: double gray;
             }          
         </style>
     </head>
@@ -35,7 +35,7 @@
 
             <section id="main">
 
-                <h1 id="boardTitle">/muz/ - Muziekopleiding</h1>
+                <h1 id="boardTitle"><?php echo $data['title']; ?></h1>
 
                 <br>
 
@@ -60,7 +60,6 @@
                         ';
                     }
                 ?>
-
 
             </section>
         </div>

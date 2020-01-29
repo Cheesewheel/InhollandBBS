@@ -39,268 +39,29 @@
 
                 <br>
 
-                <form id="threadForm">
-                    <span>Create thread</span> <br>  
-                    <span class="formSpan">Subject</span>
-                    <input type="text" name="subject"></input> <br>
-                    <span class="formSpan">Comment</span>
-                    <textarea type="text" name="post"  id="comment"></textarea> <br>
-                    <input type="submit" value="post">
-                </form>
+                <?php require APPROOT . '/view/include/threadForm.php'; ?>
 
-                <div class="thread"> 
-                    <div class="OP" class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="postSubject">Subject<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <a id="viewThread" href="">View</a>
-                        <br>
-                        <p>Openingspost</p>
-                    </div>
-                
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Gekke post hierzo</p>
-                    </div>
+                <?php 
+                    //var_dump($data['threads']);
+                    foreach($data['threads'] as $thread){
+                        echo '
+                        <div class="thread"> 
+                            <div class="OP" class="post">
+                                <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$thread->getImgUrl().'"></img>
+                                <span class="opHeader" class="postId">' . $thread->getThreadId() .'<span>
+                                <span class="opHeader" class="postSubject">' . $thread->getSubject() . '<span>
+                                <span class="opHeader" class="posterName">' . $thread->getStudentNumber() . '</span>
+                                <span class="opHeader" class="postDateTime">' . $thread->getTimeCreated() . '</span>
+                                <a class="opHeader" class="viewThread" href="">View</a>
+                                <br>
+                                <p>' . $thread->getComment() . '</p>
+                            </div>
+                        </div>
+                        ';
+                    }
+                ?>
 
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Nog zo'n post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>En nog een</p>
-                    </div>
-                </div>
-
-                <div class="thread"> 
-                    <div class="OP" class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="postSubject">Subject<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <a id="viewThread" href="">View</a>
-                        <br>
-                        <p>Openingspost</p>
-                    </div>
-                
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Gekke post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Nog zo'n post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>En nog een</p>
-                    </div>
-                </div>
-
-                <div class="thread"> 
-                    <div class="OP" class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="postSubject">Subject<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <a id="viewThread" href="">View</a>
-                        <br>
-                        <p>Openingspost</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Gekke post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Nog zo'n post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>En nog een</p>
-                    </div>
-                </div>
-
-                <div class="thread"> 
-                    <div class="OP" class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="postSubject">Subject<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <a id="viewThread" href="">View</a>
-                        <br>
-                        <p>Openingspost</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Gekke post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Nog zo'n post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>En nog een</p>
-                    </div>
-                </div>
-
-                <div class="thread"> 
-                    <div class="OP" class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="postSubject">Subject<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <a id="viewThread" href="">View</a>
-                        <br>
-                        <p>Openingspost</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Gekke post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Nog zo'n post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>En nog een</p>
-                    </div>
-                </div>
-
-                <div class="thread"> 
-                    <div class="OP" class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="postSubject">Subject<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <a id="viewThread" href="">View</a>
-                        <br>
-                        <p>Openingspost</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Gekke post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Nog zo'n post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>En nog een</p>
-                    </div>
-                </div>
-
-                <div class="thread"> 
-                    <div class="OP" class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="postSubject">Subject<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <a id="viewThread" href="">View</a>
-                        <br>
-                        <p>Openingspost</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Gekke post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>Nog zo'n post hierzo</p>
-                    </div>
-
-                    <div class="post">
-                        <span id="postId">postnummer<span>
-                        <span id="posterName">Anonymous</span>
-                        <span id="postDateTime">datetime</span>
-                        <br>
-                        <p>En nog een</p>
-                    </div>
-                </div>
 
             </section>
         </div>
-    </body>
-</html>
+<?php require APPROOT . '/view/include/footer.php'; ?>

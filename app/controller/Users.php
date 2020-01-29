@@ -97,20 +97,20 @@
                         // Send verification email
                         // Create token
                         $token = $this->createToken($user->getEmail(), "verification");
+                        
+                        // Subject
+                        $subject = "InHollandBBS User Verification";
 
                         // Message
-                        $message = "You have registered at Haarlem Festival. \n
+                        $message = "You have registered at InHollandBBS. \n
                         Click the link below to verificate your account! \n
                         " . URLROOT . "/users/userverification?token=" . $token;
 
                         // Use wordwrap() if lines are longer than 70 characters
-                        $message = wordwrap($message,70);
-
-                        // Subject
-                        $subject = "Haarlem Festival User Verification";
+                        $message = wordwrap($message,70);                        
 
                         // Send email
-                        //mail($user->getEmail(), $subject, $message);
+                        mail($user->getEmail(), $subject, $message);
                         $this->view('users/login', $data);
                     } else {
                         die('Something went wrong');
@@ -241,20 +241,22 @@
 
                         // Create token
                         $token = $this->createToken($email, "forgot");
-
+                        
+                        // Subject
+                        $subject = "InhollandBBS password recovery";
+                        
                         // Message
-                        $message = "You have requested a password recovery for your account at Haarlem Festival. \n
+                        $message = "You have requested a password recovery for your account at InhollandBBS. \n
                         Click the link below to set up a new password \n
                         " . URLROOT . "/users/newpassword?token=" . $token;                        
 
                         // Use wordwrap() if lines are longer than 70 characters
                         $message = wordwrap($message,70);
 
-                        // Subject
-                        $subject = "Haarlem Festival password recovery";
+
 
                         // Send email
-                        //mail($email, $subject, $message);
+                        mail($email, $subject, $message);
 
                         redirect("users/pwemailsend");
 
@@ -403,29 +405,26 @@
 
         public function createUserSession($loggedInUser){            
             $_SESSION['userId'] = $loggedInUser->userId;
-            $_SESSION['userEmail'] = $loggedInUser->email;
+            $_SESSION['email'] = $loggedInUser->email;
             $_SESSION['userType'] = $loggedInUser->userType;
-            $_SESSION['userName'] = $loggedInUser->name;
-            $_SESSION['userLastName'] = $loggedInUser->lastName;
-            $_SESSION['userLastName'] = $loggedInUser->studentNumber;
-            $_SESSION['userVerified'] = $loggedInUser->verified;
+            $_SESSION['name'] = $loggedInUser->name;
+            $_SESSION['lastName'] = $loggedInUser->lastName;
+            $_SESSION['studentNumber'] = $loggedInUser->studentNumber;
+            $_SESSION['verified'] = $loggedInUser->verified;
             
             redirect('pages/index');
         }
 
         public function logout(){
             unset($_SESSION['userId']);
-            unset($_SESSION['userEmail']);
+            unset($_SESSION['email']);
             unset($_SESSION['userType']);
-            unset($_SESSION['userName']);
-            unset($_SESSION['userLastName']);
-            unset($_SESSION['userStreet']);
-            unset($_SESSION['userHosue']);
-            unset($_SESSION['userPhone']);
-            unset($_SESSION['userGender']);
-            unset($_SESSION['userVerified']);
+            unset($_SESSION['name']);
+            unset($_SESSION['lastName']);
+            unset($_SESSION['studentNumber']);
+            unset($_SESSION['verified']);
             session_destroy();
-            redirect('users/login');
+            redirect('pages/index');
         }
 
         public function isLoggedIn(){
