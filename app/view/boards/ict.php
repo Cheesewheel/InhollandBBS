@@ -49,7 +49,7 @@
                 <?php require APPROOT . '/view/include/threadForm.php'; ?>
 
                 <?php 
-                    echo $this->displayThreads($data['threads']);                    
+                    echo $this->displayThreads($data['threads']); 
                 ?>
 
             </section>

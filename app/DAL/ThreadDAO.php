@@ -61,7 +61,7 @@
 
         public function getReplyCount($thread){
             $this->db->query("  SELECT COUNT(postId)
-                                FROM posts
+                                FROM replies
                                 WHERE threadId = :threadId
                             ");
 
