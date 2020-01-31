@@ -5,6 +5,8 @@
             $this->threadModel = $this->model('ThreadModel');
         }
 
+    // Webpages in boards
+        // Index
         public function index(){
             $data = [
                 'title' => 'Welcome'
@@ -13,6 +15,7 @@
             $this->view('pages/index', $data);
         }
 
+        // /ict/ - Informatica
         public function ict(){
             // Declare boardId
             $boardId = 1;
@@ -43,6 +46,7 @@
             $this->view('boards/ict', $data);
         }
         
+        // /pabo/ - PABO
         public function pabo(){
             // Declare boardId
             $boardId = 2;
@@ -69,6 +73,7 @@
             $this->view('boards/pabo', $data);
         } 
 
+        // /trv/ - Tourism Management
         public function trv(){
            // Declare boardId
            $boardId = 3;
@@ -94,6 +99,7 @@
             $this->view('boards/trv', $data);
         } 
 
+        // /biz/ - Business Studies
         public function biz(){
             // Declare boardId
             $boardId = 4;
@@ -119,6 +125,7 @@
             $this->view('boards/biz', $data);
         }
         
+        // /muz/ - Muziekopleiding
         public function muz(){
             // Declare boardId
             $boardId = 5;
@@ -144,6 +151,7 @@
             $this->view('boards/muz', $data);
         } 
 
+        // /miro/ - Medical Imaging Radiation Oncology
         public function miro(){
             // Declare boardId
             $boardId = 6;
@@ -169,6 +177,7 @@
             $this->view('boards/miro', $data);
         }
 
+        // /b/ - Bier
         public function b(){
             // Declare boardId
             $boardId = 7;
@@ -194,6 +203,7 @@
             $this->view('boards/b', $data);
         }
 
+        // /vg/ - Video Games
         public function vg(){
             // Declare boardId
             $boardId = 8;
@@ -219,6 +229,7 @@
             $this->view('boards/vg', $data);
         }
 
+        // /x/ - Toetsen & Antwoorden
         public function x(){
             // Declare boardId
             $boardId = 9;
@@ -244,6 +255,7 @@
             $this->view('boards/x', $data);
         }
 
+        // /net/ - Netwerk
         public function net(){
             // Declare boardId
             $boardId = 10;
@@ -269,6 +281,7 @@
             $this->view('boards/net', $data);
         }
 
+        // /s/ - Stickers
         public function s(){
             // Declare boardId
             $boardId = 11;
@@ -294,6 +307,8 @@
             $this->view('boards/s', $data);
         }
 
+    // Methods
+        // Display the given threads
         public function displayThreads($threads){
             foreach($threads as $thread){
                 echo '
@@ -313,7 +328,8 @@
                 ';
             }
         }
-       
+        
+        // Get the threads on given board    
         public function getThreads($boardId){
             $threads = $this->threadDAO->getThreads($boardId);
 
@@ -324,7 +340,14 @@
 
             return $threads;
         }
+        
+        // Get thread belonging to given threadId
+        public function getThread($threadId){
+            $thread = $this->threadDAO->getThread($threadId);        
+            return $thread;
+        }
 
+        // Create thread on given board
         public function createThread($post, $files, $boardId){
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);            
             $imageUrl = $this->uploadImage($files['image']);
@@ -348,11 +371,13 @@
             return $thread;
         }
 
+        // Get the amount of replies a thread has
         public function getReplyCount($thread){
             $replies = $this->threadDAO->getReplyCount($thread);
             return $replies;
         }
 
+        // Upload an image
         public function uploadImage($image){
             //die(var_dump($image));
             $targetDir = "./img/threads/";
