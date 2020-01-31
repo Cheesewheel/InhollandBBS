@@ -43,12 +43,13 @@
                 ?>
                 
                 <h1 id="boardTitle"><?php echo $data['title']; ?></h1>
+                <?php require APPROOT . '/view/include/replyForm.php'; ?>
 
                 <br>
 
                 <?php 
-                    //echo var_dump($data['thread']);
-                    echo $this->displayThread($data['thread']); 
+                    echo $this->displayThread($data['thread']);
+                    echo $this->displayReplies($data['replies']); 
                 ?>
 
             </section>

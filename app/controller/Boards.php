@@ -2,6 +2,7 @@
     class Boards extends Controller {
         public function __construct(){
             $this->threadDAO = $this->dal('ThreadDAO');
+            $this->replyModel = $this->model('ReplyModel');
             $this->threadModel = $this->model('ThreadModel');
         }
 
@@ -317,11 +318,13 @@
             }
 
             $thread = $this->getThread($threadId);
+            $replies = $this->getReplies($threadId);
             
             // Init data
             $data = [
                 'title' => 'Threadviewer',
-                'thread' => $thread
+                'thread' => $thread,
+                'replies' => $replies
             ];
 
             $this->view('boards/threadViewer', $data);
@@ -365,6 +368,22 @@
             </div>
             ';            
         }
+
+        public function displayReplies($replies){
+            foreach($replies as $reply){
+                echo '
+                <div class="post">  
+                    <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$reply->getImgUrl().'"></img>
+                    <span class="opHeader" class="postId"> No.' . $reply->getPostId() .'<span>
+                    <span class="opHeader" class="posterName">' . $reply->getStudentNumber() . '</span>
+                    <span class="opHeader" class="postDateTime">' . $reply->getTimeCreated() . '</span>
+                    <a class="opHeader" class="viewThread" href="' . URLROOT . '/boards/threadviewer?thread=' . $reply->getThreadId()  . '">View</a>
+                    <br>
+                    <p>' . $reply->getComment() . '</p>
+                </div>
+                ';
+            }
+        }
         
         // Get the threads on given board    
         public function getThreads($boardId){
@@ -382,6 +401,12 @@
         public function getThread($threadId){
             $thread = $this->threadDAO->getThread($threadId);       
             return $thread;
+        }
+
+        // Get the replies in given thread
+        public function getReplies($threadId){
+            $replies = $this->threadDAO->getReplies($threadId);
+            return $replies;
         }
 
         // Create thread on given board

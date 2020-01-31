@@ -108,5 +108,36 @@
 
             return $replies;
         }
+
+        public function getReplies($threadId){
+            $repliesArray = array();
+
+            // Get all the threads where boardID, inner join on student number
+            $this->db->query("SELECT replies.postId, replies.timeCreated, replies.imgUrl, replies.comment, users.studentNumber
+                              FROM replies
+                              INNER JOIN users
+                              ON replies.userId = users.userId
+                              WHERE replies.threadId = :threadId
+                              ORDER BY replies.timeCreated ASC
+                            ");
+
+            $this->db->bind(':threadId', $threadId);
+
+            $resultRow = $this->db->resultSet();
+
+            foreach ($resultRow as $result) {
+                $reply = new ReplyModel();
+
+                $reply->setPostId($result->postId);
+                $reply->setTimeCreated($result->timeCreated);
+                $reply->setStudentNumber($result->studentNumber);
+                $reply->setImgUrl($result->imgUrl);
+                $reply->setUserId($result->userId);
+                $reply->setComment($result->comment);
+
+                array_push($repliesArray, $reply);
+            }
+            return $repliesArray;
+        }
         
     } 
