@@ -38,6 +38,41 @@
             return $threadArray;
         }
 
+        public function getThread($threadId){
+            // Get thread where threadId
+            $this->db->query("SELECT threads.subject, threads.timeCreated, threads.imgUrl, threads.boardId, threads.comment, users.studentNumber
+                              FROM threads
+                              INNER JOIN users
+                              ON threads.userId = users.userId
+                              WHERE threads.threadId = :threadId
+                            ");
+
+            // Bind values
+            $this->db->bind(':threadId', $threadId);
+
+            // Execute query
+            $results = $this->db->resultSet();
+            //die(var_dump($results));
+
+            // Put result in ThreadModel object
+            foreach ($results as $result) {
+                $thread = new ThreadModel();
+
+                $thread->setThreadId($result->threadId);
+                $thread->setSubject($result->subject);
+                $thread->setTimeCreated($result->timeCreated);
+                $thread->setStudentNumber($result->studentNumber);
+                $thread->setImgUrl($result->imgUrl);
+                $thread->setBoardId($result->boardId);
+                $thread->setComment($result->comment);
+
+                array_push($threadArray, $thread);
+            }
+            
+            // Return ThreadModel object
+            return $thread;
+        }
+
         public function insertThread($thread){
             // Insert into tabel threads
             $this->db->query("  INSERT INTO threads (subject, userId, imgUrl, boardId, comment)

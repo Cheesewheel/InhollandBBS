@@ -307,6 +307,26 @@
             $this->view('boards/s', $data);
         }
 
+        // Threadviewer
+        public function threadViewer(){
+            // Sanitize the threadId if provided
+            if(isset($_GET['thread'])){
+                $threadId = trim(filter_var($_GET['thread'], FILTER_SANITIZE_STRING));
+            } else {
+                die('kut');
+            }
+
+            $thread = $this->getThread($threadId);
+            
+            // Init data
+            $data = [
+                'title' => 'Threadviewer',
+                'thread' => $thread
+            ];
+
+            $this->view('boards/threadViewer', $data);
+        }
+
     // Methods
         // Display the given threads
         public function displayThreads($threads){
@@ -320,13 +340,30 @@
                         <span class="opHeader" class="posterName">' . $thread->getStudentNumber() . '</span>
                         <span class="opHeader" class="postDateTime">' . $thread->getTimeCreated() . '</span>
                         <span class="opHeader" class="postDateTime">Replies: ' .  $thread->getReplies()  . '</span>
-                        <a class="opHeader" class="viewThread" href="">View</a>
+                        <a class="opHeader" class="viewThread" href="' . URLROOT . '/boards/threadviewer?thread=' . $thread->getThreadId()  . '">View</a>
                         <br>
                         <p>' . $thread->getComment() . '</p>
                     </div>
                 </div>
                 ';
             }
+        }
+
+        // Display given thread
+        public function displayThread($thread){
+            echo '
+            <div class="thread"> 
+                <div class="OP" class="post">
+                    <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$thread->getImgUrl().'"></img>
+                    <span class="opHeader" class="postId"> No.' . $thread->getThreadId() .'<span>
+                    <span class="opHeader" class="postSubject">' . $thread->getSubject() . '<span>
+                    <span class="opHeader" class="posterName">' . $thread->getStudentNumber() . '</span>
+                    <span class="opHeader" class="postDateTime">' . $thread->getTimeCreated() . '</span>
+                    <br>
+                    <p>' . $thread->getComment() . '</p>
+                </div>
+            </div>
+            ';            
         }
         
         // Get the threads on given board    
@@ -343,7 +380,7 @@
         
         // Get thread belonging to given threadId
         public function getThread($threadId){
-            $thread = $this->threadDAO->getThread($threadId);        
+            $thread = $this->threadDAO->getThread($threadId);       
             return $thread;
         }
 
