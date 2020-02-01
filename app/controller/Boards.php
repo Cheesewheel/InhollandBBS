@@ -348,11 +348,13 @@
                 echo '
                 <div class="thread"> 
                     <div class="OP" class="post">
-                        <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$thread->getImgUrl().'"></img>
-                        <span class="opHeader" class="postId"> No.' . $thread->getThreadId() .'<span>
+                        <a href="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '" target="_blank">
+                            <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '"></img>
+                        </a>
                         <span class="opHeader" class="postSubject">' . $thread->getSubject() . '<span>
                         <span class="opHeader" class="posterName">' . $thread->getStudentNumber() . '</span>
                         <span class="opHeader" class="postDateTime">' . $thread->getTimeCreated() . '</span>
+                        <span class="opHeader" class="postId">Thread.' . $thread->getThreadId() .'<span>
                         <span class="opHeader" class="postDateTime">Replies: ' .  $thread->getReplies()  . '</span>
                         <a class="opHeader" class="viewThread" href="' . URLROOT . '/boards/threadviewer?thread=' . $thread->getThreadId()  . '">View</a>
                         <br>
@@ -368,11 +370,13 @@
             echo '
             <div class="thread"> 
                 <div class="OP" class="post">
-                    <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$thread->getImgUrl().'"></img>                    
+                    <a href="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '" target="_blank">
+                        <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '"></img>
+                    </a>                  
                     <span class="opHeader" class="postSubject">' . $thread->getSubject() . '<span>
                     <span class="opHeader" class="posterName">' . $thread->getStudentNumber() . '</span>
                     <span class="opHeader" class="postDateTime">' . $thread->getTimeCreated() . '</span>
-                    <span class="opHeader" class="postId"> No.' . $thread->getThreadId() .'<span>
+                    <span class="opHeader" class="postId"> Thread.' . $thread->getThreadId() .'<span>
                     <br>
                     <p>' . $thread->getComment() . '</p>
                 </div>
@@ -384,10 +388,12 @@
             foreach($replies as $reply){
                 echo '
                 <div class="post">  
-                    <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$reply->getImgUrl().'"></img>                    
+                    <a href="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '" target="_blank">
+                        <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '"></img>
+                    </a>                    
                     <span class="opHeader" class="posterName">' . $reply->getStudentNumber() . '</span>
                     <span class="opHeader" class="postDateTime">' . $reply->getTimeCreated() . '</span>
-                    <span class="opHeader" class="postId"> No.' . $reply->getReplyId() .'<span>
+                    <span class="opHeader" class="postId"> Reply.' . $reply->getReplyId() .'<span>
                     <br>
                     <p>' . $reply->getComment() . '</p>
                 </div>
@@ -445,19 +451,22 @@
 
         // Create reply in given thread
         public function createReply($post, $files, $threadId){
-            $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);            
-            $imageUrl = $this->uploadImage($files['image']);
+            $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            
+            $reply = new ReplyModel();
+
+            if($files['image']['size'] > 0){
+                //die(var_dump($files['image']['size']));
+                $imageUrl = $this->uploadImage($files['image']);
+                $reply->setImgUrl($imageUrl);
+            } else{
+                //die('sneed');
+                $reply->setImgUrl("");
+            }
+            
 
             // Init data
-            $reply = new ReplyModel();
-            $reply->setUserId($_SESSION['userId']);
-            
-            if(!empty($imageUrl)){
-                $reply->setImgUrl($imageUrl);
-            } else {
-                $reply->setImgUrl("");
-            }            
-
+            $reply->setUserId($_SESSION['userId']);                 
             $reply->setThreadId($threadId);
             $reply->setComment(trim($post['comment'])); 
             //die(var_dump($reply));
@@ -511,7 +520,6 @@
                 // Generate random name for image
                 $targetFile = $targetDir . basename($newImageName) . "." . end($imageExtension);
                 $url = basename($newImageName) . "." . end($imageExtension);
-                
                 if (move_uploaded_file($image["tmp_name"], $targetFile)) {
                     return $url;                    
                 } else {
