@@ -1,7 +1,7 @@
 <?php
     class ReplyModel {
         private $threadId;
-        private $postId;
+        private $replyId;
         private $timeCreated;
         private $userId;
         private $studentNumber;
@@ -17,12 +17,12 @@
             return $this->threadId;
         }
 
-        //Get and Set for postId
-        public function setPostId($postId){
-            $this->postId = $postId;
+        //Get and Set for replyId
+        public function setReplyId($replyId){
+            $this->replyId = $replyId;
         }
-        public function getPostId(){
-            return $this->postId;
+        public function getReplyId(){
+            return $this->replyId;
         }
 
         //Get and Set for timeCreated

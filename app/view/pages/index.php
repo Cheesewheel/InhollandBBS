@@ -69,5 +69,9 @@
                 <a href="<?php echo URLROOT ?>/boards/s">/s/ - Stickers</a>
             </nav>
         </div>
+
+        <?php 
+            uploadImage($files['image']);
+        ?>
 <?php require APPROOT . '/view/include/footer.php'; ?>
 

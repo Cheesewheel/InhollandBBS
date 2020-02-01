@@ -40,7 +40,7 @@
 
         public function getThread($threadId){
             // Get thread where threadId
-            $this->db->query("SELECT threads.subject, threads.timeCreated, threads.imgUrl, threads.boardId, threads.comment, users.studentNumber
+            $this->db->query("SELECT threads.threadId, threads.subject, threads.timeCreated, threads.imgUrl, threads.boardId, threads.comment, users.studentNumber
                               FROM threads
                               INNER JOIN users
                               ON threads.userId = users.userId
@@ -94,8 +94,28 @@
             }
         }
 
+        public function insertReply($reply){
+            // Insert into tabel threads
+            $this->db->query("  INSERT INTO replies (threadId, userId, comment, imgUrl)
+                                VALUES (:threadId, :userId, :comment, :imgUrl)
+                            ");
+
+            // Bind values
+            $this->db->bind(':threadId', $reply->getThreadId());
+            $this->db->bind(':userId', $reply->getUserID());
+            $this->db->bind(':imgUrl', $reply->getImgUrl());    
+            $this->db->bind(':comment', $reply->getComment());
+            
+            // Execute
+            if($this->db->execute()){
+                return true;
+            } else {
+                die('Query failed to execute!');
+            }
+        }
+
         public function getReplyCount($thread){
-            $this->db->query("  SELECT COUNT(postId)
+            $this->db->query("  SELECT COUNT(replyId)
                                 FROM replies
                                 WHERE threadId = :threadId
                             ");
@@ -113,7 +133,7 @@
             $repliesArray = array();
 
             // Get all the threads where boardID, inner join on student number
-            $this->db->query("SELECT replies.postId, replies.timeCreated, replies.imgUrl, replies.comment, users.studentNumber
+            $this->db->query("SELECT replies.replyId, replies.timeCreated, replies.imgUrl, replies.comment, users.studentNumber
                               FROM replies
                               INNER JOIN users
                               ON replies.userId = users.userId
@@ -128,7 +148,7 @@
             foreach ($resultRow as $result) {
                 $reply = new ReplyModel();
 
-                $reply->setPostId($result->postId);
+                $reply->setReplyId($result->replyId);
                 $reply->setTimeCreated($result->timeCreated);
                 $reply->setStudentNumber($result->studentNumber);
                 $reply->setImgUrl($result->imgUrl);

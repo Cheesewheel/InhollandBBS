@@ -319,6 +319,15 @@
 
             $thread = $this->getThread($threadId);
             $replies = $this->getReplies($threadId);
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
+                // Put $_POST and $_FILES in variables
+                $post = $_POST;
+                $files = $_FILES;
+                
+                // Call method to create reply
+                $reply = $this->createReply($post, $files, $threadId);                
+            }
             
             // Init data
             $data = [
@@ -357,11 +366,11 @@
             echo '
             <div class="thread"> 
                 <div class="OP" class="post">
-                    <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$thread->getImgUrl().'"></img>
-                    <span class="opHeader" class="postId"> No.' . $thread->getThreadId() .'<span>
+                    <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$thread->getImgUrl().'"></img>                    
                     <span class="opHeader" class="postSubject">' . $thread->getSubject() . '<span>
                     <span class="opHeader" class="posterName">' . $thread->getStudentNumber() . '</span>
                     <span class="opHeader" class="postDateTime">' . $thread->getTimeCreated() . '</span>
+                    <span class="opHeader" class="postId"> No.' . $thread->getThreadId() .'<span>
                     <br>
                     <p>' . $thread->getComment() . '</p>
                 </div>
@@ -373,11 +382,10 @@
             foreach($replies as $reply){
                 echo '
                 <div class="post">  
-                    <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$reply->getImgUrl().'"></img>
-                    <span class="opHeader" class="postId"> No.' . $reply->getPostId() .'<span>
+                    <img class="image" alt="image" src="'.URLROOT.'/img/threads/'.$reply->getImgUrl().'"></img>                    
                     <span class="opHeader" class="posterName">' . $reply->getStudentNumber() . '</span>
                     <span class="opHeader" class="postDateTime">' . $reply->getTimeCreated() . '</span>
-                    <a class="opHeader" class="viewThread" href="' . URLROOT . '/boards/threadviewer?thread=' . $reply->getThreadId()  . '">View</a>
+                    <span class="opHeader" class="postId"> No.' . $reply->getReplyId() .'<span>
                     <br>
                     <p>' . $reply->getComment() . '</p>
                 </div>
@@ -391,7 +399,7 @@
 
             foreach($threads as $thread){
                 $replies = (array)$this->getReplyCount($thread);
-                $thread->setReplies($replies["COUNT(postId)"]);            
+                $thread->setReplies($replies["COUNT(replyId)"]);            
             }
 
             return $threads;
@@ -426,11 +434,34 @@
             }            
 
             $thread->setBoardId($boardId);
-            $thread->setComment(trim($_POST['comment']));            
+            $thread->setComment(trim($post['comment']));            
 
             $this->threadDAO->insertThread($thread);
             
             return $thread;
+        }
+
+        // Create reply in given thread
+        public function createReply($post, $files, $threadId){
+            $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);            
+            $imageUrl = $this->uploadImage($files['image']);
+
+            // Init data
+            $reply = new ReplyModel();
+            $reply->setUserId($_SESSION['userId']);
+            
+            if(!empty($imageUrl)){
+                $reply->setImgUrl($imageUrl);
+            } else {
+                $reply->setImgUrl("");
+            }            
+
+            $reply->setThreadId($threadId);
+            $reply->setComment(trim($post['comment'])); 
+            //die(var_dump($reply));
+            $this->threadDAO->insertReply($reply);
+            
+            return $reply;
         }
 
         // Get the amount of replies a thread has
