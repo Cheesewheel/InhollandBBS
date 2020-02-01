@@ -333,7 +333,9 @@
             $data = [
                 'title' => 'Threadviewer',
                 'thread' => $thread,
-                'replies' => $replies
+                'replies' => $replies,
+                'commentError' => '',
+                'imageError' => ''
             ];
 
             $this->view('boards/threadViewer', $data);
