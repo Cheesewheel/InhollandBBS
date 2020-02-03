@@ -71,7 +71,25 @@
         </div>
 
         <?php 
-            uploadImage($files['image']);
+            echo '
+                <div class="post">
+                    ' . if(empty($reply->getImgUrl())){
+                        
+                    } else{
+                        . '<a href="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '" target="_blank">
+                            <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '"></img>
+                        </a>' . 
+                    } . '
+                    <a href="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '" target="_blank">
+                        <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '"></img>
+                    </a>                    
+                    <span class="opHeader" class="posterName">' . $reply->getStudentNumber() . '</span>
+                    <span class="opHeader" class="postDateTime">' . $reply->getTimeCreated() . '</span>
+                    <span class="opHeader" class="postId"> Reply.' . $reply->getReplyId() .'<span>
+                    <br>
+                    <p>' . $reply->getComment() . '</p>
+                </div>
+                ';
         ?>
 <?php require APPROOT . '/view/include/footer.php'; ?>
 

@@ -35,7 +35,7 @@
 
             // Init data
             $data = [
-                'title' => '/ict/ - Informatica',
+                'title' => $this->getBoardName($boardId),
                 'threads' => $threads,
                 'subjectError' => '',
                 'commentError' => '',
@@ -66,9 +66,11 @@
 
             // Init data
             $data = [
-                'title' => '/pabo/ - PABO',
+                'title' => $this->getBoardName($boardId),
                 'threads' => $threads,
-                'subjectError' => ''
+                'subjectError' => '',
+                'commentError' => '',
+                'imageError' => ''
             ];
 
             $this->view('boards/pabo', $data);
@@ -93,8 +95,11 @@
 
            // Init data
            $data = [
-               'title' => '/trv/ - Tourism Management',
-               'threads' => $threads
+                'title' => $this->getBoardName($boardId),
+                'threads' => $threads,
+                'subjectError' => '',
+                'commentError' => '',
+                'imageError' => ''
            ];
 
             $this->view('boards/trv', $data);
@@ -119,8 +124,11 @@
 
             // Init data
             $data = [
-                'title' => '/biz/ - Business Studies',
-                'threads' => $threads
+                'title' => $this->getBoardName($boardId),
+                'threads' => $threads,
+                'subjectError' => '',
+                'commentError' => '',
+                'imageError' => ''
             ];
 
             $this->view('boards/biz', $data);
@@ -145,8 +153,11 @@
 
             // Init data
             $data = [
-                'title' => '/muz/ - Muziek Opleiding',
-                'threads' => $threads
+                'title' => $this->getBoardName($boardId),
+                'threads' => $threads,
+                'subjectError' => '',
+                'commentError' => '',
+                'imageError' => ''
             ];
 
             $this->view('boards/muz', $data);
@@ -171,8 +182,11 @@
 
             // Init data
             $data = [
-                'title' => '/miro/ - Medical Imaging Radiation Oncology',
-                'threads' => $threads
+                'title' => $this->getBoardName($boardId),
+                'threads' => $threads,
+                'subjectError' => '',
+                'commentError' => '',
+                'imageError' => ''
             ];
 
             $this->view('boards/miro', $data);
@@ -197,8 +211,11 @@
 
             // Init data
             $data = [
-                'title' => '/b/ - Bier',
-                'threads' => $threads
+                'title' => $this->getBoardName($boardId),
+                'threads' => $threads,
+                'subjectError' => '',
+                'commentError' => '',
+                'imageError' => ''
             ];
 
             $this->view('boards/b', $data);
@@ -223,8 +240,11 @@
 
             // Init data
             $data = [
-                'title' => '/vg/ - Video Games',
-                'threads' => $threads
+                'title' => $this->getBoardName($boardId),
+                'threads' => $threads,
+                'subjectError' => '',
+                'commentError' => '',
+                'imageError' => ''
             ];
 
             $this->view('boards/vg', $data);
@@ -249,8 +269,11 @@
 
             // Init data
             $data = [
-                'title' => '/x/ - Toetsen & Antwoorden',
-                'threads' => $threads
+                'title' => $this->getBoardName($boardId),
+                'threads' => $threads,
+                'subjectError' => '',
+                'commentError' => '',
+                'imageError' => ''
             ];
 
             $this->view('boards/x', $data);
@@ -275,8 +298,11 @@
 
             // Init data
             $data = [
-                'title' => '/net/ - Netwerk',
-                'threads' => $threads
+                'title' => $this->getBoardName($boardId),
+                'threads' => $threads,
+                'subjectError' => '',
+                'commentError' => '',
+                'imageError' => ''
             ];
 
             $this->view('boards/net', $data);
@@ -301,8 +327,11 @@
 
             // Init data
             $data = [
-                'title' => '/s/ - Stickers',
-                'threads' => $threads
+                'title' => $this->getBoardName($boardId),
+                'threads' => $threads,
+                'subjectError' => '',
+                'commentError' => '',
+                'imageError' => ''
             ];
 
             $this->view('boards/s', $data);
@@ -342,41 +371,108 @@
         }
 
     // Methods
+        // Get the name of the board by boardId
+        public function getBoardName($boardId){
+            switch($boardId){
+                case 1:
+                    return "/ict/ - Informatica";
+                break;
+
+                case 2:
+                    return "/pabo/ - PABO";
+                break;
+                
+                case 3:
+                    return "/trv/ - Tourism Management";
+                break;
+
+                case 4:
+                    return "/biz/ - Bussiness Studies";
+                break;
+
+                case 5:
+                    return "/muz/ - Muziekopleiding";
+                break;
+
+                case 6:
+                    return "/miro/ - Medical Imaging Radiation Oncology";
+                break;
+
+                case 7:
+                    return "/b/ - Bier";
+                break;
+
+                case 8:
+                    return "/vg/ - Video Games";
+                break;
+
+                case 9:
+                    return "/x/ - Toetsen & Antwoorden";
+                break;
+
+                case 10:
+                    return "/net/ - Netwerk";
+                break;
+
+                case 11:
+                    return "/s/ - Stickers";
+                break;
+
+
+
+            }
+        }
+
         // Display the given threads
         public function displayThreads($threads){
-            foreach($threads as $thread){
+            foreach($threads as $thread){       
                 echo '
-                <div class="thread"> 
-                    <div class="OP" class="post">
-                        <a href="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '" target="_blank">
-                            <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '"></img>
-                        </a>
-                        <span class="opHeader" class="postSubject">' . $thread->getSubject() . '<span>
-                        <span class="opHeader" class="posterName">' . $thread->getStudentNumber() . '</span>
-                        <span class="opHeader" class="postDateTime">' . $thread->getTimeCreated() . '</span>
-                        <span class="opHeader" class="postId">Thread.' . $thread->getThreadId() .'<span>
-                        <span class="opHeader" class="postDateTime">Replies: ' .  $thread->getReplies()  . '</span>
-                        <a class="opHeader" class="viewThread" href="' . URLROOT . '/boards/threadviewer?thread=' . $thread->getThreadId()  . '">View</a>
-                        <br>
-                        <p>' . $thread->getComment() . '</p>
+                    <div class="thread"> 
+                        <div class="OP" class="post">                            
+                            <div class="opHeader">
+                                <span class="postSubject">' . $thread->getSubject() . '<span>
+                                <span class="posterName">' . $thread->getStudentNumber() . '</span>
+                                <span class="postDateTime">' . $thread->getTimeCreated() . '</span>
+                                <span class="postId">Thread.' . $thread->getThreadId() .'<span>
+                                <span class="postDateTime">Replies: ' .  $thread->getReplies()  . '</span>
+                                <a class="viewThread" href="' . URLROOT . '/boards/threadviewer?thread=' . $thread->getThreadId()  . '">View</a>
+                            </div>
+                            <a href="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '" target="_blank">
+                                <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '"></img>
+                            </a>
+                            <br>
+                            <p>' . $thread->getComment() . '</p>
+                        </div>
                     </div>
-                </div>
-                ';
-            }
+                ';                
+
+                // Display the last up to 3 replies if the thread has them
+                if($thread->getReplies() > 0) {                
+                    // Get the last 3 replies of the thread
+                    $replies = $this->threadDAO->getLast3Replies($thread->getThreadId());
+                    
+                    // Display the replies
+                    $this->displayReplies($replies);
+                }     
+            }            
         }
 
         // Display given thread
         public function displayThread($thread){
             echo '
             <div class="thread"> 
-                <div class="OP" class="post">
+                <div class="OP" class="post">                                    
+                    <div class="opHeader">
+                        <span class="postSubject">' . $thread->getSubject() . '<span>
+                        <span class="posterName">' . $thread->getStudentNumber() . '</span>
+                        <span class="postDateTime">' . $thread->getTimeCreated() . '</span>
+                        <span class="postId">Thread.' . $thread->getThreadId() .'<span>
+                        <span class="postDateTime">Replies: ' .  $thread->getReplies()  . '</span>
+                        <a class="viewThread" href="' . URLROOT . '/boards/threadviewer?thread=' . $thread->getThreadId()  . '">View</a>
+                    </div>
                     <a href="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '" target="_blank">
                         <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '"></img>
-                    </a>                  
-                    <span class="opHeader" class="postSubject">' . $thread->getSubject() . '<span>
-                    <span class="opHeader" class="posterName">' . $thread->getStudentNumber() . '</span>
-                    <span class="opHeader" class="postDateTime">' . $thread->getTimeCreated() . '</span>
-                    <span class="opHeader" class="postId"> Thread.' . $thread->getThreadId() .'<span>
+                    </a>  
                     <br>
                     <p>' . $thread->getComment() . '</p>
                 </div>
@@ -387,13 +483,17 @@
         public function displayReplies($replies){
             foreach($replies as $reply){
                 echo '
-                <div class="post">  
-                    <a href="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '" target="_blank">
-                        <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '"></img>
-                    </a>                    
-                    <span class="opHeader" class="posterName">' . $reply->getStudentNumber() . '</span>
-                    <span class="opHeader" class="postDateTime">' . $reply->getTimeCreated() . '</span>
-                    <span class="opHeader" class="postId"> Reply.' . $reply->getReplyId() .'<span>
+                <div class="post">                                        
+                        <div class="opHeader">
+                            <span class="posterName">' . $reply->getStudentNumber() . '</span>
+                            <span class="postDateTime">' . $reply->getTimeCreated() . '</span>
+                            <span class="postId">Thread.' . $reply->getReplyId() .'<span>
+                        </div>
+                        '. (!empty($reply->getImgUrl()) 
+                        ? ' <a href="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '" target="_blank">
+                                <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '"></img>
+                            </a>' 
+                        : '') . '
                     <br>
                     <p>' . $reply->getComment() . '</p>
                 </div>

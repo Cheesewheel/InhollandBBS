@@ -61,8 +61,7 @@ a:link, a:visited, a:link:active, a:visited:active{
 }   
 
 #threadForm{
-    width: 300px;
-    
+    width: 300px;    
     margin: auto;
     margin-bottom: 1em;
     padding: 1em;
@@ -75,7 +74,7 @@ a:link, a:visited, a:link:active, a:visited:active{
 }
 
 .thread{
-    margin-bottom: 2em;
+    margin-top: 1em;
     vertical-align: text-top;
 }
 
@@ -132,4 +131,9 @@ footer{
 
 .profileHeader{
     font-weight: bold;
+}
+
+.posterName{
+    font-weight: bolder;
+    
 }
