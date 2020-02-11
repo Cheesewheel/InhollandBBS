@@ -64,6 +64,8 @@
                 // Validate studentNumber not empty
                 if(empty($user->getstudentNumber())){
                     $data['studentNumberError'] = 'Please enter student number';
+                } elseif($this->userDAO->findUserByStudentNumber($user->getStudentNumber())){
+                    $data['studentNumberError'] = 'Student number is already taken';
                 } elseif(!preg_match($studentNumberValidation, $user->getstudentNumber())){
                     $data['studentNumberError'] = 'Student number must be 6 digits';
                 }
@@ -239,6 +241,9 @@
         }
 
         public function profile(){
+            $params = explode('/', $_GET['url']);
+            //die(var_dump($params));
+
             // Init data
             $data = [
                 'title' => 'Forgot password?',
@@ -433,7 +438,7 @@
             $this->view('users/userverification', $data);
         }
 
-        public function createUserSession($loggedInUser){            
+        public function createUserSession($loggedInUser){
             $_SESSION['userId'] = $loggedInUser->userId;
             $_SESSION['email'] = $loggedInUser->email;
             $_SESSION['userType'] = $loggedInUser->userType;

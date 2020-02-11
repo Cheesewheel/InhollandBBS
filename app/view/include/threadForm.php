@@ -12,10 +12,11 @@
         <input type="file" name="image" id="image">
         <span class="invalidFeedback"><?php echo $data['imageError'] ?></span><br>
         <input type="submit" value="post">
-    </form>        
+    </form>      
 <?php else : ?>    
     <span>If you want to create a thread you must <a id="login" href="<?php echo URLROOT; ?>/users/login" class="buttonStyle">log in</a>!</span>
 <?php endif; ?>
+<hr>  
 
 
     

@@ -10,12 +10,12 @@
             $threadArray = array();
 
             // Get all the threads where boardID, inner join on student number
-            $this->db->query("SELECT threads.threadId, threads.subject, threads.timeCreated, threads.imgUrl, threads.boardId, threads.comment, users.studentNumber
+            $this->db->query("SELECT threads.threadId, threads.subject, threads.timeCreated, threads.imgUrl, threads.boardId, threads.comment, threads.latestReply, users.studentNumber
                               FROM threads
                               INNER JOIN users
                               ON threads.userId = users.userId
                               WHERE threads.boardId = :boardId
-                              ORDER BY threads.timeCreated DESC
+                              ORDER BY threads.latestReply DESC
                             ");
 
             $this->db->bind(':boardId', $boardId);
@@ -73,8 +73,40 @@
             return $thread;
         }
 
+        public function getThreadsByUser($userId){
+            $threadArray = array();
+
+            // Get all the threads where boardID, inner join on student number
+            $this->db->query("SELECT threads.threadId, threads.subject, threads.timeCreated, threads.imgUrl, threads.boardId, threads.comment, users.studentNumber
+                              FROM threads
+                              INNER JOIN users
+                              ON threads.userId = users.userId
+                              WHERE threads.userId = :userId
+                              ORDER BY threads.timeCreated DESC
+                            ");
+
+            $this->db->bind(':userId', $userId);
+
+            $resultRow = $this->db->resultSet();
+
+            foreach ($resultRow as $result) {
+                $thread = new ThreadModel();
+
+                $thread->setThreadId($result->threadId);
+                $thread->setSubject($result->subject);
+                $thread->setTimeCreated($result->timeCreated);
+                $thread->setStudentNumber($result->studentNumber);
+                $thread->setImgUrl($result->imgUrl);
+                $thread->setBoardId($result->boardId);
+                $thread->setComment($result->comment);
+
+                array_push($threadArray, $thread);
+            }
+            return $threadArray;
+        }
+
         public function insertThread($thread){
-            // Insert into tabel threads
+            // Insert into table threads
             $this->db->query("  INSERT INTO threads (subject, userId, imgUrl, boardId, comment)
                                 VALUES (:subject, :userId, :imgUrl, :boardId, :comment)
                             ");
@@ -106,6 +138,25 @@
             $this->db->bind(':imgUrl', $reply->getImgUrl());    
             $this->db->bind(':comment', $reply->getComment());
             
+            // Execute
+            if($this->db->execute()){
+                return true;
+            } else {
+                die('Query failed to execute!');
+            }
+        }
+
+        public function updateLatestReply($threadId){
+            // Update field latestReply in tabel threads
+            $this->db->query("  UPDATE threads
+                                SET latestReply = :latestReply
+                                WHERE threadId = :threadId
+                            ");
+
+            // Bind values
+            $this->db->bind(':latestReply', date('Y-m-d H:i:s'));
+            $this->db->bind(':threadId', $threadId);
+
             // Execute
             if($this->db->execute()){
                 return true;
@@ -169,15 +220,16 @@
                               INNER JOIN users
                               ON replies.userId = users.userId
                               WHERE replies.threadId = :threadId
-                              ORDER BY replies.timeCreated ASC
+                              ORDER BY replies.timeCreated DESC
                               LIMIT 3
                             ");
 
             $this->db->bind(':threadId', $threadId);
 
             $resultRow = $this->db->resultSet();
+            $reverted = new ArrayIterator(array_reverse($resultRow));
 
-            foreach ($resultRow as $result) {
+            foreach ($reverted as $result) {
                 $reply = new ReplyModel();
 
                 $reply->setReplyId($result->replyId);
@@ -189,6 +241,5 @@
                 array_push($repliesArray, $reply);
             }
             return $repliesArray;
-        }
-        
+        }        
     } 

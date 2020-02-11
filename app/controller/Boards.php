@@ -343,7 +343,7 @@
             if(isset($_GET['thread'])){
                 $threadId = trim(filter_var($_GET['thread'], FILTER_SANITIZE_STRING));
             } else {
-                die('kut');
+                redirect('pages/index');
             }
 
             $thread = $this->getThread($threadId);
@@ -360,7 +360,7 @@
             
             // Init data
             $data = [
-                'title' => 'Threadviewer',
+                'title' => 'Now viewing thread no.' . $thread->getThreadId(),
                 'thread' => $thread,
                 'replies' => $replies,
                 'commentError' => '',
@@ -417,9 +417,55 @@
                 case 11:
                     return "/s/ - Stickers";
                 break;
+            }
+        }
 
+        // Get the link to a board by boardId
+        public function getBoardLink($boardId){
+            switch($boardId){
+                case 1:
+                    return URLROOT . "/boards/ict";
+                break;
 
+                case 2:
+                    return URLROOT . "/boards/pabo";
+                break;
+                
+                case 3:
+                    return URLROOT . "/boards/trv";
+                break;
 
+                case 4:
+                    return URLROOT . "/boards/biz";
+                break;
+
+                case 5:
+                    return URLROOT . "/boards/muz";
+                break;
+
+                case 6:
+                    return URLROOT . "/boards/miro";
+                break;
+
+                case 7:
+                    return URLROOT . "/boards/b";
+                break;
+
+                case 8:
+                    return URLROOT . "/boards/vg";
+                break;
+
+                case 9:
+                    return URLROOT . "/boards/x";
+                break;
+
+                case 10:
+                    return URLROOT . "/boards/net";
+                break;
+
+                case 11:
+                    return URLROOT . "/boards/s";
+                break;
             }
         }
 
@@ -437,6 +483,7 @@
                                 <span class="postDateTime">Replies: ' .  $thread->getReplies()  . '</span>
                                 <a class="viewThread" href="' . URLROOT . '/boards/threadviewer?thread=' . $thread->getThreadId()  . '">View</a>
                             </div>
+                            <span class="imageInfo">' . $thread->getImgUrl() . '</span><br>
                             <a href="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '" target="_blank">
                                 <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '"></img>
                             </a>
@@ -470,6 +517,7 @@
                         <span class="postDateTime">Replies: ' .  $thread->getReplies()  . '</span>
                         <a class="viewThread" href="' . URLROOT . '/boards/threadviewer?thread=' . $thread->getThreadId()  . '">View</a>
                     </div>
+                    <span class="imageInfo">' . $thread->getImgUrl() . '</span><br>
                     <a href="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '" target="_blank">
                         <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '"></img>
                     </a>  
@@ -487,10 +535,11 @@
                         <div class="opHeader">
                             <span class="posterName">' . $reply->getStudentNumber() . '</span>
                             <span class="postDateTime">' . $reply->getTimeCreated() . '</span>
-                            <span class="postId">Thread.' . $reply->getReplyId() .'<span>
+                            <span class="postId">Reply.' . $reply->getReplyId() .'<span>
                         </div>
                         '. (!empty($reply->getImgUrl()) 
-                        ? ' <a href="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '" target="_blank">
+                        ?   '<span class="imageInfo">' . $reply->getImgUrl() . '</span><br>
+                            <a href="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '" target="_blank">
                                 <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '"></img>
                             </a>' 
                         : '') . '
@@ -569,10 +618,17 @@
             $reply->setUserId($_SESSION['userId']);                 
             $reply->setThreadId($threadId);
             $reply->setComment(trim($post['comment'])); 
-            //die(var_dump($reply));
+
+            // Insert reply and update latestReply in threads table
             $this->threadDAO->insertReply($reply);
+            $this->threadDAO->updateLatestReply($reply->getThreadId());
             
             return $reply;
+        }
+
+        // Delete reply
+        public function deleteReply($replyId){
+
         }
 
         // Get the amount of replies a thread has

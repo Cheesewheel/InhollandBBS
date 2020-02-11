@@ -6,6 +6,7 @@ class UserDAO{
         $this->db = new Database;
     }
 
+    // Register user
     public function register($user){
         // Insert into table user
         $this->db->query('INSERT INTO users (name, lastName, studentNumber, email, password)
@@ -59,6 +60,26 @@ class UserDAO{
         }
     }
 
+    //Find user by student number
+    public function findUserByStudentNumber($number){
+        // Prepare query
+        $this->db->query('SELECT * FROM users WHERE studentNumber = :number');
+
+        //Bind values
+        $this->db->bind(':number', $number);
+
+        // Execute
+        $row = $this->db->single();
+
+        //Check row
+        if($this->db->rowCount() > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Update password of given user
     public function newPassword($token, $password){
         // Prepare query
         $this->db->query('  UPDATE users
@@ -79,6 +100,7 @@ class UserDAO{
         }
     }
 
+    // Verificate user by token
     public function verificateUser($token){
         // Prepare query
         $this->db->query('  UPDATE users
@@ -96,5 +118,15 @@ class UserDAO{
         } else {
             die('Query failed to execute!');
         }
+    }
+
+    // Request new email
+    public function requestNewEmail(){
+        
+    }
+
+    // Update email of user
+    public function newEmail(){
+
     }
 }

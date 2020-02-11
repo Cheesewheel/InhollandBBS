@@ -28,7 +28,6 @@
 
     <body>
         <?php require APPROOT . '/view/include/header.php'; ?>
-        <br>
 
         <div id="content">
             <?php require APPROOT . '/view/include/nav.php'; ?>

@@ -9,7 +9,8 @@
         private $boardId;
         private $comment;
         private $replies;
-
+        private $latestReply;
+        
         //Get and Set for threadId
         public function setThreadId($threadId){
             $this->threadId = $threadId;
@@ -80,5 +81,13 @@
         }
         public function getReplies(){
             return $this->replies;
+        }  
+        
+        //Get and Set for latestReply
+        public function setLatestReply($latestReply){
+            $this->latestReply = $latestReply;
+        }
+        public function getLatestReply(){
+            return $this->latestReply;
         }
     }

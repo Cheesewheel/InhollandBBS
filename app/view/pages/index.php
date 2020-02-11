@@ -6,7 +6,7 @@
         </title>
 
         <style>
-            #content{
+            #mainmenu{
                 border: double brown;
                 width: 700px;
                 margin: auto;
@@ -36,7 +36,7 @@
     </head>
 
     <body>
-        <div id="content" >
+        <div id="mainmenu" >
             <h1 id="header"><?php echo $data['title']; ?></h1>
             <img id="logo" src= "<?php echo URLROOT ?>/img/inhollandbbs.jpg">
 
@@ -45,6 +45,16 @@
                 <br>
                 Enjoy your stay!
             </p>
+
+            <hr>
+
+            <h3 id="header">News</h3>
+
+            <ul>
+                <li>5-2-2020 - News section added</li>
+            </ul>
+
+            <hr>
 
             <nav id="nav">
                 <span class="category">Opleidingen</span>
@@ -68,28 +78,8 @@
                 <a href="<?php echo URLROOT ?>/boards/net">/net/ - Netwerk</a> <br>
                 <a href="<?php echo URLROOT ?>/boards/s">/s/ - Stickers</a>
             </nav>
-        </div>
 
-        <?php 
-            echo '
-                <div class="post">
-                    ' . if(empty($reply->getImgUrl())){
-                        
-                    } else{
-                        . '<a href="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '" target="_blank">
-                            <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '"></img>
-                        </a>' . 
-                    } . '
-                    <a href="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '" target="_blank">
-                        <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $reply->getImgUrl() . '"></img>
-                    </a>                    
-                    <span class="opHeader" class="posterName">' . $reply->getStudentNumber() . '</span>
-                    <span class="opHeader" class="postDateTime">' . $reply->getTimeCreated() . '</span>
-                    <span class="opHeader" class="postId"> Reply.' . $reply->getReplyId() .'<span>
-                    <br>
-                    <p>' . $reply->getComment() . '</p>
-                </div>
-                ';
-        ?>
+            <hr>
+        </div>
 <?php require APPROOT . '/view/include/footer.php'; ?>
 

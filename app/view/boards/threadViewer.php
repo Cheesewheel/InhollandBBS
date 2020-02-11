@@ -28,9 +28,6 @@
 
     <body>
         <?php require APPROOT . '/view/include/header.php'; ?>
-        <br>
-
-        
 
         <div id="content">
             <?php require APPROOT . '/view/include/nav.php'; ?>
@@ -43,9 +40,16 @@
                 ?>
                 
                 <h1 id="boardTitle"><?php echo $data['title']; ?></h1>
-                <?php require APPROOT . '/view/include/replyForm.php'; ?>
 
                 <br>
+
+                <?php require APPROOT . '/view/include/replyForm.php'; ?>
+
+                <a href=<?php echo $this->getBoardLink($data['thread']->getBoardId()) ?>>
+                    [Back]
+                </a>
+
+                <hr>
 
                 <?php 
                     echo $this->displayThread($data['thread']);

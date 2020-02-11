@@ -5,30 +5,29 @@
 
         <style>            
             #navbar{
-                border: double yellow;
+                border: double goldenRod;
             } 
 
             #main{
-                border: double yellow;
+                border: double goldenRod;
             }                 
 
             #threadForm{
-                border: double yellow;
+                border: double goldenRod;
             }
 
             .post{
-                border: double yellow;
+                border: double goldenRod;
             }  
 
             .OP{
-                border: double yellow;
+                border: double goldenRod;
             }          
         </style>
     </head>
 
     <body>
         <?php require APPROOT . '/view/include/header.php'; ?>
-        <br>
 
         <div id="content">
             <?php require APPROOT . '/view/include/nav.php'; ?>

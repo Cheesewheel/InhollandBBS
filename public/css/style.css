@@ -33,6 +33,10 @@ a:link, a:visited, a:link:active, a:visited:active{
     width: 100%;
 }
 
+#mainmenu{
+    padding: 1em;
+}
+
 #navbar{
     border: double green;
     padding: 1em;
@@ -40,6 +44,7 @@ a:link, a:visited, a:link:active, a:visited:active{
     color: black;
     float: left;
     position: fixed;
+    background-color: #E0D2BC;
 } 
 
 .category{
@@ -52,6 +57,7 @@ a:link, a:visited, a:link:active, a:visited:active{
     left: 200px;
     width: calc(100% - 250px);
     position: relative;
+    background-color: #E0D2BC;
 }    
 
 #boardTitle{
@@ -76,6 +82,7 @@ a:link, a:visited, a:link:active, a:visited:active{
 .thread{
     margin-top: 1em;
     vertical-align: text-top;
+    background-color: #E0D2BC;
 }
 
 .opHeader{
@@ -87,6 +94,7 @@ a:link, a:visited, a:link:active, a:visited:active{
     padding: 1em;
     margin: 0.5em;
     margin-left: 2em;
+    background-color: #E0D2BC;
 }  
 
 .OP{
@@ -136,4 +144,8 @@ footer{
 .posterName{
     font-weight: bolder;
     
+}
+
+.imageInfo{
+    font-size: 12px;
 }

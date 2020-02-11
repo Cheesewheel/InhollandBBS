@@ -28,9 +28,6 @@
 
     <body>
         <?php require APPROOT . '/view/include/header.php'; ?>
-        <br>
-
-        
 
         <div id="content">
             <?php require APPROOT . '/view/include/nav.php'; ?>
@@ -51,7 +48,6 @@
                 <?php 
                     echo $this->displayThreads($data['threads']); 
                 ?>
-
             </section>
         </div>
 <?php require APPROOT . '/view/include/footer.php'; ?>
