@@ -5,7 +5,9 @@
             $this->userDAO = $this->dal('UserDAO');
             $this->tokenDAO = $this->dal('TokenDAO');
         }
-
+    
+    // Webpages
+        // User registration
         public function register(){
             // Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -165,6 +167,7 @@
             }
         }
 
+        // User login
         public function login(){
             // Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -240,6 +243,7 @@
             }
         }
 
+        // User profile
         public function profile(){
             $params = explode('/', $_GET['url']);
             //die(var_dump($params));
@@ -253,6 +257,7 @@
             $this->view('users/profile', $data);
         }
 
+        // Forgot password
         public function forgot(){
             // Init data
             $data = [
@@ -307,6 +312,7 @@
             $this->view('users/forgot', $data);
         }
 
+        // Password recovery email send
         public function pwEmailSend(){
             // Init data
             $data = [
@@ -317,6 +323,7 @@
             $this->view('users/pwemailsend', $data);
         }
 
+        // Page to submit new password 
         public function newPassword(){
             // Sanitize the token if provided
             if(isset($_GET['token'])){
@@ -402,6 +409,7 @@
             $this->view('users/newpassword', $data);
         }
 
+        // Page when new password is submitted
         public function pwDone(){
             //sanitize user input and declare password validation regex
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -414,8 +422,9 @@
 
             //Load UI
             $this->view('users/pwdone', $data);
-        }
+        }   
 
+        // Page the verification link links to
         public function userVerification(){
             // Sanitize the token
             $token = trim(filter_var($_GET['token'], FILTER_SANITIZE_STRING));
@@ -438,6 +447,8 @@
             $this->view('users/userverification', $data);
         }
 
+    // Methods
+        // Creates a user session
         public function createUserSession($loggedInUser){
             $_SESSION['userId'] = $loggedInUser->userId;
             $_SESSION['email'] = $loggedInUser->email;
@@ -450,6 +461,7 @@
             redirect('pages/index');
         }
 
+        // Logs a user out
         public function logout(){
             unset($_SESSION['userId']);
             unset($_SESSION['email']);
@@ -462,6 +474,7 @@
             redirect('pages/index');
         }
 
+        // Checks if the user is logged in
         public function isLoggedIn(){
             if(isset($_SESSION['userId'])){
                 return true;
@@ -470,6 +483,7 @@
             }
         }
 
+        // Creates a token
         public function createToken($email, $type){
             $token = bin2hex(openssl_random_pseudo_bytes(50));
             $this->tokenDAO->insertToken($email, $token, $type);
@@ -489,6 +503,7 @@
             }
         }
 
+        // Creates new password form
         public function newPasswordFormFactory($data, $token){
             echo '
                 <form id="forgotForm" action="newpassword?token='.$token.'" method="POST">

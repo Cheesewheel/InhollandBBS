@@ -14,7 +14,7 @@
 
         public function about(){
             $data = [
-                'title' => 'About Us'
+                'title' => 'About InHollandBBS'
             ];
 
             $this->view('pages/about', $data);

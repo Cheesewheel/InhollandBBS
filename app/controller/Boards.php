@@ -473,7 +473,7 @@
         public function displayThreads($threads){
             foreach($threads as $thread){       
                 echo '
-                    <div class="thread"> 
+                    <div class="thread" id="' . $thread->getThreadId() . '"> 
                         <div class="OP" class="post">                            
                             <div class="opHeader">
                                 <span class="postSubject">' . $thread->getSubject() . '<span>
@@ -507,7 +507,7 @@
         // Display given thread
         public function displayThread($thread){
             echo '
-            <div class="thread"> 
+            <div class="thread" id="' . $thread->getThreadId() . '"> 
                 <div class="OP" class="post">                                    
                     <div class="opHeader">
                         <span class="postSubject">' . $thread->getSubject() . '<span>
@@ -531,7 +531,7 @@
         public function displayReplies($replies){
             foreach($replies as $reply){
                 echo '
-                <div class="post">                                        
+                <div class="post" id="' . $reply->getReplyId() . '">                                        
                         <div class="opHeader">
                             <span class="posterName">' . $reply->getStudentNumber() . '</span>
                             <span class="postDateTime">' . $reply->getTimeCreated() . '</span>

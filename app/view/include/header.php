@@ -3,7 +3,7 @@
         Home
     </a>
 
-    <a id="home" href="<?php echo URLROOT; ?>">
+    <a id="home" href="<?php echo URLROOT; ?>/pages/about">
         About
     </a>      
 
