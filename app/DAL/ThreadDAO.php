@@ -21,7 +21,7 @@
             $this->db->bind(':boardId', $boardId);
 
             $resultRow = $this->db->resultSet();
-
+            
             foreach ($resultRow as $result) {
                 $thread = new ThreadModel();
 

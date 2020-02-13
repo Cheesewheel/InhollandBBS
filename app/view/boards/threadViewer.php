@@ -52,8 +52,8 @@
                 <hr>
 
                 <?php 
-                    echo $this->displayThread($data['thread']);
-                    echo $this->displayReplies($data['replies']); 
+                    echo $this->threadModel->displayThread($data['thread']);
+                    echo $this->replyModel->displayReplies($data['replies']); 
                 ?>
 
             </section>
