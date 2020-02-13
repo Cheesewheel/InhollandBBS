@@ -21,9 +21,6 @@
             // Declare boardId
             $boardId = 1;
 
-            // Get the threads for this board
-            $threads = $this->getThreads($boardId);
-
             if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
                 $post = $_POST;                
@@ -32,6 +29,9 @@
                 // Call method to create thread
                 $thread = $this->createThread($post, $files, $boardId);                
             }
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
 
             // Init data
             $data = [
@@ -52,9 +52,6 @@
             // Declare boardId
             $boardId = 2;
 
-            // Get the threads for this board
-            $threads = $this->getThreads($boardId);
-
             if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
                 $post = $_POST;
@@ -63,6 +60,9 @@
                 // Call method to create thread
                 $thread = $this->createThread($post, $files, $boardId);                
             }
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
 
             // Init data
             $data = [
@@ -81,9 +81,6 @@
            // Declare boardId
            $boardId = 3;
 
-           // Get the threads for this board
-           $threads = $this->getThreads($boardId);
-
            if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
                 $post = $_POST;
@@ -92,6 +89,9 @@
                 // Call method to create thread
                 $thread = $this->createThread($post, $files, $boardId);                
             }
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
 
            // Init data
            $data = [
@@ -110,9 +110,6 @@
             // Declare boardId
             $boardId = 4;
 
-            // Get the threads for this board
-            $threads = $this->getThreads($boardId);
-
             if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
                 $post = $_POST;
@@ -121,6 +118,9 @@
                 // Call method to create thread
                 $thread = $this->createThread($post, $files, $boardId);                
             }
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
 
             // Init data
             $data = [
@@ -139,9 +139,6 @@
             // Declare boardId
             $boardId = 5;
 
-            // Get the threads for this board
-            $threads = $this->getThreads($boardId);
-
             if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
                 $post = $_POST;
@@ -150,6 +147,9 @@
                 // Call method to create thread
                 $thread = $this->createThread($post, $files, $boardId);                
             }
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
 
             // Init data
             $data = [
@@ -168,9 +168,6 @@
             // Declare boardId
             $boardId = 6;
 
-            // Get the threads for this board
-            $threads = $this->getThreads($boardId);
-
             if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
                 $post = $_POST;
@@ -179,6 +176,9 @@
                 // Call method to create thread
                 $thread = $this->createThread($post, $files, $boardId);                
             }
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
 
             // Init data
             $data = [
@@ -197,9 +197,6 @@
             // Declare boardId
             $boardId = 7;
 
-            // Get the threads for this board
-            $threads = $this->getThreads($boardId);
-
             if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
                 $post = $_POST;
@@ -208,6 +205,9 @@
                 // Call method to create thread
                 $thread = $this->createThread($post, $files, $boardId);                
             }
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
 
             // Init data
             $data = [
@@ -226,9 +226,6 @@
             // Declare boardId
             $boardId = 8;
 
-            // Get the threads for this board
-            $threads = $this->getThreads($boardId);
-
             if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
                 $post = $_POST;
@@ -237,6 +234,9 @@
                 // Call method to create thread
                 $thread = $this->createThread($post, $files, $boardId);                
             }
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
 
             // Init data
             $data = [
@@ -253,10 +253,7 @@
         // /x/ - Toetsen & Antwoorden
         public function x(){
             // Declare boardId
-            $boardId = 9;
-
-            // Get the threads for this board
-            $threads = $this->getThreads($boardId);
+            $boardId = 9;            
 
             if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
@@ -266,6 +263,9 @@
                 // Call method to create thread
                 $thread = $this->createThread($post, $files, $boardId);                
             }
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
 
             // Init data
             $data = [
@@ -282,10 +282,7 @@
         // /net/ - Netwerk
         public function net(){
             // Declare boardId
-            $boardId = 10;
-
-            // Get the threads for this board
-            $threads = $this->getThreads($boardId);
+            $boardId = 10;            
 
             if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
@@ -295,6 +292,9 @@
                 // Call method to create thread
                 $thread = $this->createThread($post, $files, $boardId);                
             }
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
 
             // Init data
             $data = [
@@ -311,10 +311,7 @@
         // /s/ - Stickers
         public function s(){
             // Declare boardId
-            $boardId = 11;
-
-            // Get the threads for this board
-            $threads = $this->getThreads($boardId);
+            $boardId = 11;            
 
             if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
@@ -324,6 +321,9 @@
                 // Call method to create thread
                 $thread = $this->createThread($post, $files, $boardId);                
             }
+
+            // Get the threads for this board
+            $threads = $this->getThreads($boardId);
 
             // Init data
             $data = [
@@ -344,10 +344,7 @@
                 $threadId = trim(filter_var($_GET['thread'], FILTER_SANITIZE_STRING));
             } else {
                 redirect('pages/index');
-            }
-
-            $thread = $this->getThread($threadId);
-            $replies = $this->getReplies($threadId);
+            }            
 
             if($_SERVER['REQUEST_METHOD'] == 'POST'){  
                 // Put $_POST and $_FILES in variables
@@ -355,8 +352,11 @@
                 $files = $_FILES;
                 
                 // Call method to create reply
-                $reply = $this->createReply($post, $files, $threadId);                
+                $reply = $this->createReply($post, $files, $threadId);               
             }
+
+            $thread = $this->getThread($threadId);
+            $replies = $this->getReplies($threadId);
             
             // Init data
             $data = [
@@ -577,7 +577,7 @@
         // Create thread on given board
         public function createThread($post, $files, $boardId){
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);            
-            $imageUrl = $this->uploadImage($files['image']);
+            $imageUrl = $this->threadModel->uploadImage($files['image']);
 
             // Init data
             $thread = new ThreadModel();
@@ -594,7 +594,7 @@
             $thread->setComment(trim($post['comment']));            
 
             $this->threadDAO->insertThread($thread);
-            
+
             return $thread;
         }
 
@@ -622,7 +622,7 @@
             // Insert reply and update latestReply in threads table
             $this->threadDAO->insertReply($reply);
             $this->threadDAO->updateLatestReply($reply->getThreadId());
-            
+
             return $reply;
         }
 

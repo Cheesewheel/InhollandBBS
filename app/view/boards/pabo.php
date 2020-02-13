@@ -34,7 +34,7 @@
 
             <section id="main">
 
-                <h1 id="boardTitle">/pabo/ - PABO</h1>
+                <h1 id="boardTitle"><?php echo $data['title'] ?></h1>
 
                 <br>
 

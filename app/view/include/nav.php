@@ -12,10 +12,13 @@
     <br>
     <a href="<?php echo URLROOT; ?>/boards/b">/b/ - Bier</a> <br>
     <a href="<?php echo URLROOT; ?>/boards/vg">/vg/ - Video Games</a> <br>
-    <br>
-    <span class="category">The Dark Zone</span>
-    <br>
-    <a href="<?php echo URLROOT; ?>/boards/x">/x/ - Toetsen & Antwoorden</a> <br>
-    <a href="<?php echo URLROOT; ?>/boards/net">/net/ - Netwerk</a> <br>
-    <a href="<?php echo URLROOT; ?>/boards/s">/s/ - Stickers</a>
+    <br>    
+    
+    <?php if(isset($_SESSION['userId'])) : ?>
+        <span class="category">The Dark Zone</span>
+        <br>
+        <a href="<?php echo URLROOT; ?>/boards/x">/x/ - Toetsen & Antwoorden</a> <br>
+        <a href="<?php echo URLROOT; ?>/boards/net">/net/ - Netwerk</a> <br>
+        <a href="<?php echo URLROOT; ?>/boards/s">/s/ - Stickers</a>
+    <?php endif; ?>
 </nav>

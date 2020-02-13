@@ -447,6 +447,11 @@
             $this->view('users/userverification', $data);
         }
 
+        // Search
+        public function search(){
+            echo "ligma";
+        }
+
     // Methods
         // Creates a user session
         public function createUserSession($loggedInUser){
@@ -461,7 +466,7 @@
             redirect('pages/index');
         }
 
-        // Logs a user out
+        // Logs out a user
         public function logout(){
             unset($_SESSION['userId']);
             unset($_SESSION['email']);
