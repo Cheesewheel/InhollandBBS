@@ -13,7 +13,7 @@
         </a>
 
         <?php if($_SESSION['userType'] > 1) : ?>
-            <a id="login" href="<?php echo URLROOT; ?>/users/search" class="buttonStyle">
+            <a id="login" href="<?php echo URLROOT; ?>/pages/search" class="buttonStyle">
             Search
             </a>        
         <?php endif; ?>

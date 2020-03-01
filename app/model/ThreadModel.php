@@ -113,10 +113,12 @@
                                 <span class="postDateTime">Replies: ' .  $thread->getReplies()  . '</span>
                                 <a class="viewThread" href="' . URLROOT . '/boards/threadviewer?thread=' . $thread->getThreadId()  . '">View</a>
                             </div>
-                            <span class="imageInfo">' . $thread->getImgUrl() . '</span><br>
-                            <a href="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '" target="_blank">
-                                <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '"></img>
-                            </a>
+                            '. (!empty($thread->getImgUrl()) 
+                            ?   '<span class="imageInfo">' . $thread->getImgUrl() . '</span><br>
+                                <a href="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '" target="_blank">
+                                    <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '"></img>
+                                </a>' 
+                            : '') . '
                             <br>
                             <p>' . $thread->getComment() . '</p>
                         </div>
@@ -147,10 +149,12 @@
                         <span class="postDateTime">Replies: ' .  $thread->getReplies()  . '</span>
                         <a class="viewThread" href="' . URLROOT . '/boards/threadviewer?thread=' . $thread->getThreadId()  . '">View</a>
                     </div>
-                    <span class="imageInfo">' . $thread->getImgUrl() . '</span><br>
-                    <a href="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '" target="_blank">
-                        <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '"></img>
-                    </a>  
+                    '. (!empty($thread->getImgUrl()) 
+                    ?   '<span class="imageInfo">' . $thread->getImgUrl() . '</span><br>
+                        <a href="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '" target="_blank">
+                            <img class="image" alt="image" src="' . URLROOT . '/img/threads/' . $thread->getImgUrl() . '"></img>
+                        </a>' 
+                    : '') . '  
                     <br>
                     <p>' . $thread->getComment() . '</p>
                 </div>
@@ -222,25 +226,22 @@
                 //die("File is an image");
                 $uploadOk = 1;
             } else {
-                die(var_dump($image));
                 $uploadOk = 0;
             }
 
             // Check file size
             if ($image["size"] > 5000000) {
-                die("Sorry, your file is too large.");
                 $uploadOk = 0;
             }
 
             // Allow certain file formats
             if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-                die("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
                 $uploadOk = 0;
             }
 
             if ($uploadOk == 0) {
-                die("Sorry, your file was not uploaded.");
             // if everything is ok, try to upload file
+                return "";
             } else {
                 // Generate random name for image
                 $targetFile = $targetDir . basename($newImageName) . "." . end($imageExtension);
@@ -248,7 +249,7 @@
                 if (move_uploaded_file($image["tmp_name"], $targetFile)) {
                     return $url;                    
                 } else {
-                    die("Sorry, there was an error uploading your file.");
+                    return "";
                 }
             }
         }

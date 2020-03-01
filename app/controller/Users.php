@@ -445,12 +445,7 @@
 
             //Load UI
             $this->view('users/userverification', $data);
-        }
-
-        // Search
-        public function search(){
-            echo "ligma";
-        }
+        }        
 
     // Methods
         // Creates a user session

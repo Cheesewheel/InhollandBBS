@@ -149,3 +149,7 @@ footer{
 .imageInfo{
     font-size: 12px;
 }
+
+#searchInput{
+    width:100%;
+}

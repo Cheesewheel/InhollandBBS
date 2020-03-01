@@ -9,6 +9,8 @@
         <span class="formSpan">Comment</span>
         <textarea type="text" name="comment"  id="comment"></textarea> <br>
         <span class="invalidFeedback"><?php echo $data['commentError'] ?></span><br>
+
+        <span class="formSpan">Image (max 5MB. JPG, PNG or GIF)</span>
         <input type="file" name="image" id="image">
         <span class="invalidFeedback"><?php echo $data['imageError'] ?></span><br>
         <input type="submit" value="post">
